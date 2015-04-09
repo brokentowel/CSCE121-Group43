@@ -3,11 +3,8 @@
 	
 int main()
 try {
+	cout << "Pancake game yay!" << endl;
 	Intro intro;
-	cout << "Select difficulty [2-9]:\t";
-	int diff;
-	cin >> diff;
-	intro.set_difficulty(diff);
 	
 	Game game;
 	cout << game.double_number(4) << endl;
