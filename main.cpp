@@ -7,7 +7,6 @@ try {
 	Intro intro;
 	
 	Game game;
-	cout << game.double_number(4) << endl;
 
     return 0;
 }
