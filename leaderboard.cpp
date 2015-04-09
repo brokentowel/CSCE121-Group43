@@ -5,21 +5,22 @@ class leaderboard
     struct score_entry { string initials; int score; };
     
     // vector to hold scores in position
-    vector<score_entry> scores;
+    vector<score_entry> scores[6];
     
     // return high scores 
     vector<score_entry> get_high_scores() { return scores; }
     
     ofstream ost {"scores.txt"};
-    ost << score_entry;
+    string initials;
+    int score;
+    while(ist >> initials >> score)
+    {
+        scores.push_back(score_entry{name,score});
+    }
     ost.close();
     
     ifstream ist {"scores.txt"};
-    if(ist.it_open())
-    {
-    
-    }
-    
+  
     // add a new high score
     void write_high_score(vector<score_entry> high_scores) { scores.push_back(score_entry); }
     
@@ -29,3 +30,9 @@ class leaderboard
     // sets initials of certain score
     void write_high_score() { return; }
 };
+
+
+
+
+
+
