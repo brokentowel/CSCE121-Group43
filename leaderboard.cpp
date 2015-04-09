@@ -1,3 +1,4 @@
+/*
 // handles the score system and the leaderboard elements
 class leaderboard
 {
@@ -19,3 +20,4 @@ class leaderboard
     // sets initials of certain score
     void write_high_score() { return; }
 };
+*/
