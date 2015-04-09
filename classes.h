@@ -6,20 +6,18 @@
 class Intro {
 public:
 	Intro(void);
-	void set_difficulty(int);
-
-private:
-	int difficulty;
 };
 
 class Game {
 public:
+	Game(int);
 	Game(void);
+	void set_difficulty(int);
 	int double_number(int);
 
 private:
 	vector<int> pancake_stack;
-	int pancakes;
+	int difficulty;
 };
 
 #endif

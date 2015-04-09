@@ -4,10 +4,22 @@
 #include "classes.h"
 
 // handles abstract game mechanics
+void Game::set_difficulty(int n)
+{
+	this->difficulty = n;
+	cout << "Difficulty set to: " << this->difficulty << endl;
+}
+
+Game::Game(int d)
+{
+	cout << "new game is being created" << endl;
+		
+	this->difficulty = d;
+	cout << "new game is being created with difficult of: " << this->difficulty << endl;
+}
 
 Game::Game(void)	// this is a class constructor
 {
-	cout << "new game is being created" << endl;
-	this->pancakes = 8;
+	this->difficulty = 8;
 }
 
