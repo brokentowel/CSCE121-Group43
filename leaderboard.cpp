@@ -1,4 +1,3 @@
-/*
 // handles the score system and the leaderboard elements
 class leaderboard
 {
@@ -9,7 +8,17 @@ class leaderboard
     vector<score_entry> scores;
     
     // return high scores 
-    vector<score_entry> get_high_scores() { reutrn scores; }
+    vector<score_entry> get_high_scores() { return scores; }
+    
+    ofstream ost {"scores.txt"};
+    ost << score_entry;
+    ost.close();
+    
+    ifstream ist {"scores.txt"};
+    if(ist.it_open())
+    {
+    
+    }
     
     // add a new high score
     void write_high_score(vector<score_entry> high_scores) { scores.push_back(score_entry); }
@@ -20,4 +29,3 @@ class leaderboard
     // sets initials of certain score
     void write_high_score() { return; }
 };
-*/
