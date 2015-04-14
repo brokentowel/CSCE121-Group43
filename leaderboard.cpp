@@ -29,6 +29,11 @@ class leaderboard
         scores[6]=s;
         sort(scores.begin(), scores.end(), is_lower);
         
+        for (i=0;i<scores.size(),i++)
+        {
+                //write this shit to a file
+        }
+        
        
         
         
