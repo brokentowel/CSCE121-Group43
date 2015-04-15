@@ -1,21 +1,25 @@
+// this is the abstract game mechanics
+
+#include "std_lib_facilities_4.h"
+#include "classes.h"
+
 // handles abstract game mechanics
-class game
+void Game::set_difficulty(int n)
 {
-    // flips stack above pancakes
-    void flip_pancakes(int spatula_position) { return; }
-    
-    // function to set "minimum" amount of moves
-    void daugherity_function() { return; }
-    
-    // adds a move to the movie counter
-    void add_move() { return; }
-    
-    // sets difficulty of game
-    struct difficulty set_difficulty() { return; }
-    
-    // sets difficulty of game and changes game accordingly
-    void initialize_pancakes(struct difficulty) { return; }
-    
-    // cyclical function to repeat on every move
-    void cycle() { return; }
-};
+	this->difficulty = n;
+	cout << "Difficulty set to: " << this->difficulty << endl;
+}
+
+Game::Game(int d)
+{
+	cout << "new game is being created" << endl;
+		
+	this->difficulty = d;
+	cout << "new game is being created with difficult of: " << this->difficulty << endl;
+}
+
+Game::Game(void)	// this is a class constructor
+{
+	this->difficulty = 8;
+}
+
