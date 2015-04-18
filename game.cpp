@@ -2,8 +2,11 @@
 
 #include "std_lib_facilities_4.h"
 #include "classes.h"
+<<<<<<< HEAD
 #include <random>
 #include <chrono>
+=======
+>>>>>>> origin/master
 
 // handles abstract game mechanics
 void Game::set_difficulty(int n)
@@ -12,6 +15,7 @@ void Game::set_difficulty(int n)
 	cout << "Difficulty set to: " << this->difficulty << endl;
 }
 
+<<<<<<< HEAD
 // generates random stack of pancakes
 void Game::generate_stack(int d)
 {
@@ -101,3 +105,18 @@ Game::Game(int d)
 	cout << "You beat the game!" << endl;
 	cout << "It took you " << user_steps.size() << " steps!" << endl;
 }
+=======
+Game::Game(int d)
+{
+	cout << "new game is being created" << endl;
+		
+	this->difficulty = d;
+	cout << "new game is being created with difficult of: " << this->difficulty << endl;
+}
+
+Game::Game(void)	// this is a class constructor
+{
+	this->difficulty = 8;
+}
+
+>>>>>>> origin/master

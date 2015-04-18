@@ -3,6 +3,7 @@
 #include "std_lib_facilities_4.h"
 #include "classes.h"
 
+<<<<<<< HEAD
 #include "Graph.h"
 #include "Simple_window.h"
 
@@ -23,4 +24,9 @@ Intro::Intro(Simple_window& win)	// reference to window so that this class can a
 	win.attach(r);
 	
 	win.wait_for_button();
+=======
+Intro::Intro(void)
+{
+	cout << "intro constructed" << endl;
+>>>>>>> origin/master
 }
