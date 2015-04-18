@@ -6,7 +6,7 @@
 #include "Graph.h"
 #include "Simple_window.h"
 
-Intro::Intro(void)
+Intro::Intro(Simple_window& win)	// reference to window so that this class can actually use it
 {
 	cout << "Intro constructed" << endl;
 	
@@ -21,4 +21,6 @@ Intro::Intro(void)
 	r.set_color(aggie_maroon);
 	
 	win.attach(r);
+	
+	win.wait_for_button();
 }

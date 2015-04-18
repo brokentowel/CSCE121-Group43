@@ -13,17 +13,16 @@ try {
 	
 	Simple_window win {Point{100, 100}, 600, 400, "FlipFlaps"};	// create game window
 	
-	Intro intro;
+	//Intro intro (win);
 	
 	cout << "Select difficulty [2-9]: ";
 	int diff;
 	cin >> diff;
+	
 	if (diff >= 2 && diff <= 9)
 		Game game(diff);
 	else
-		cout << "wrong difficult entered" << endl;
-	
-	win.wait_for_button();
+		cout << "wrong difficulty entered" << endl;
 
     return 0;
 }
