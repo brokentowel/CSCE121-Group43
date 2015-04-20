@@ -8,7 +8,7 @@ class leaderboard
     struct score_entry { string initials; int score; };
     
     // function for comparing two score_entry
-    bool is_lower(const score_entry& x, const score_entry& x) { return x.score < y.score; }
+    bool is_lower(const score_entry& x, const score_entry& y) { return x.score < y.score; }
     
     // vector to hold scores in position
     vector<score_entry> scores[6];
