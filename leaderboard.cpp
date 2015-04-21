@@ -32,24 +32,17 @@ class leaderboard
         scores[6]=s;
         sort(scores.begin(), scores.end(), is_lower);
         
-<<<<<<< HEAD
         for (i = 0; i < scores.size(); i++)
         {
                 //write this shit to a file
         }        
-=======
+		
         for (i=0;i<scores.size(),i++)
         {
                 //write this shit to a file
-        }
-        
-       
-        
-        
-        
->>>>>>> origin/master
+		}
     }
-    
+   
     
   
 
@@ -64,12 +57,4 @@ class leaderboard
     ifstream ist {"scores.txt"};
 };
 
-<<<<<<< HEAD
 */
-=======
-
-
-
-
-
->>>>>>> origin/master

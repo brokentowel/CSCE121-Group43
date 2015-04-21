@@ -1,6 +1,6 @@
 #include "std_lib_facilities_4.h"
 #include "classes.h"
-<<<<<<< HEAD
+
 #include "Graph.h"
 #include "Simple_window.h"
 	
@@ -15,29 +15,15 @@ try {
 	Simple_window win {Point{100, 100}, 600, 400, "FlipFlaps"};	// create game window
 	
 	//Intro intro (win);
-=======
-	
-int main()
-try {
-	cout << "Pancake game yay!" << endl;
-	Intro intro;
->>>>>>> origin/master
 	
 	cout << "Select difficulty [2-9]: ";
 	int diff;
 	cin >> diff;
-<<<<<<< HEAD
 	
 	if (diff >= 2 && diff <= 9)
-		Game game(diff);
+		Game game(win, diff);
 	else
 		cout << "wrong difficulty entered" << endl;
-=======
-	if (diff >= 2 && diff <= 9)
-		Game game(diff);
-	else
-		cout << "wrong difficult entered" << endl;
->>>>>>> origin/master
 
     return 0;
 }

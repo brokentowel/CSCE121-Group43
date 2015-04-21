@@ -1,12 +1,8 @@
-// this is the abstract game mechanics
-
 #include "std_lib_facilities_4.h"
 #include "classes.h"
-<<<<<<< HEAD
+#include "find_solution.h"
 #include <random>
 #include <chrono>
-=======
->>>>>>> origin/master
 
 // handles abstract game mechanics
 void Game::set_difficulty(int n)
@@ -15,7 +11,6 @@ void Game::set_difficulty(int n)
 	cout << "Difficulty set to: " << this->difficulty << endl;
 }
 
-<<<<<<< HEAD
 // generates random stack of pancakes
 void Game::generate_stack(int d)
 {
@@ -44,11 +39,12 @@ void Game::swap(int a, int b)
 // flips the order of pancakes from element i to the last element
 void Game::flip(int i, int c)	// c is used to gradually move from the last element inwards
 {	
-	if(i < pancake_stack.size() - 1 - c)
+	if(c < i)
 	{
-		swap(i, pancake_stack.size() - 1 - c);
-		flip(i + 1, c + 1);
+		swap(c, i);
+		flip(i - 1, c + 1);
 	}
+	
 	return;
 }
 
@@ -77,7 +73,7 @@ void Game::check(void)
 {
 	for (int i = 0; i < pancake_stack.size() - 1; ++i)
 	{
-		if(pancake_stack[i] < pancake_stack[i+1])
+		if(pancake_stack[i] > pancake_stack[i+1])
 			return;
 	}
 	
@@ -85,38 +81,66 @@ void Game::check(void)
 }
 
 // goes back a step
-void Game::undo()		// a is the vector of steps, s is the pancake_stack
+void Game::undo()
 {
 	flip(user_steps[user_steps.size() - 1], 0);
 	user_steps.pop_back();
 	print_stack();
 }
 
+// returns the minimum amount of steps to complete the game
+int Game::get_minimum_steps()
+{
+	return find_solution(pancake_stack)->size();	// since find_solution() returns a pointer to an array, we must use -> to access the member function
+}
+
+// calculates score
+int Game::calculate_score()
+{
+	return (100 - 10 * (user_steps.size() - minimum_steps)) * difficulty;
+}
+
+// drawing methods
+
+/*
+Game::draw_pancakes(Simple_window& win, vector<int> pancake)
+{
+	Takes the array of panckaes and draws them all on same x-value with different y-values depending on size of pancakes
+	for loop:
+		draw bottom pancake (so that it appears to be underneath other pancakes)
+		from array.end() to 0
+}
+
+Game::draw_pancake()
+{
+	Takes position x, position y, and size to draw a pancake of specific shape and height
+	Oval top and bottom with circle sides and rectangle center?
+}
+*/
+
 // constructors
 
-Game::Game(int d)
-{		
-	this->difficulty = d;
+Game::Game(Simple_window& win, int d)
+{
+	cout << "Game constructed" << endl;
+	using namespace Graph_lib;
+	
+	int x_size = win.x_max();
+	int y_size = win.y_max();
+	
+	difficulty = d;
 	game_play = true;
 	
-	generate_stack(this->difficulty);
+	generate_stack(difficulty);
+	
+	minimum_steps = get_minimum_steps();
+	
 	print_stack();
 	cycle();
 	cout << "You beat the game!" << endl;
 	cout << "It took you " << user_steps.size() << " steps!" << endl;
+	cout << "Score: " << calculate_score() << endl;
+	
+	//win.attach();
+	win.wait_for_button();
 }
-=======
-Game::Game(int d)
-{
-	cout << "new game is being created" << endl;
-		
-	this->difficulty = d;
-	cout << "new game is being created with difficult of: " << this->difficulty << endl;
-}
-
-Game::Game(void)	// this is a class constructor
-{
-	this->difficulty = 8;
-}
-
->>>>>>> origin/master
