@@ -15,7 +15,7 @@ public:
 
 class Game {
 public:
-	Game(Simple_window&, int);
+	Game(int);
 	void set_difficulty(int);
 	void generate_stack(int);
 	void print_stack(void);
@@ -28,11 +28,22 @@ public:
 	int calculate_score();
 
 private:
-	vector<int> pancake_stack;	// assume index 0 to be bottom of stack
+	vector<int> pancake_stack;	// assume index 0 to be top of stack
 	vector<int> user_steps;
 	int difficulty;
 	bool game_play;
+	bool game_running;
 	int minimum_steps;
+};
+
+class Interface {
+public:
+	Interface(Simple_window&);
+	void draw_pancakes(Simple_window& win, vector<int> pancake);
+	void draw_pancake(int x, int y, int s);
+
+private:
+
 };
 
 #endif

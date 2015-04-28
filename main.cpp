@@ -1,3 +1,5 @@
+// game screen size is 800x600
+
 #include "std_lib_facilities_4.h"
 #include "classes.h"
 
@@ -12,7 +14,7 @@ try {
 	
 	using namespace Graph_lib;
 	
-	Simple_window win {Point{100, 100}, 600, 400, "FlipFlaps"};	// create game window
+	Simple_window win {Point{100, 100}, 800, 600, "FlipFlaps"};	// create game window
 	
 	//Intro intro (win);
 	
@@ -21,7 +23,7 @@ try {
 	cin >> diff;
 	
 	if (diff >= 2 && diff <= 9)
-		Game game(win, diff);
+		Game game(diff);
 	else
 		cout << "wrong difficulty entered" << endl;
 

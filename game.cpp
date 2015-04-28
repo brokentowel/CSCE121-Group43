@@ -50,9 +50,10 @@ void Game::flip(int i, int c)	// c is used to gradually move from the last eleme
 
 // cyclical process used for the game
 void Game::cycle(void)
-{
+{	
 	while(game_play)
 	{
+		if (pancake_stack.size() > minimum_steps + 10) { break; }	// this would result in a negative score, at which point the game ends
 		int x;
 		cout << "Where would you like to place the spatula? ";
 		cin >> x;
@@ -100,47 +101,33 @@ int Game::calculate_score()
 	return (100 - 10 * (user_steps.size() - minimum_steps)) * difficulty;
 }
 
-// drawing methods
-
-/*
-Game::draw_pancakes(Simple_window& win, vector<int> pancake)
-{
-	Takes the array of panckaes and draws them all on same x-value with different y-values depending on size of pancakes
-	for loop:
-		draw bottom pancake (so that it appears to be underneath other pancakes)
-		from array.end() to 0
-}
-
-Game::draw_pancake()
-{
-	Takes position x, position y, and size to draw a pancake of specific shape and height
-	Oval top and bottom with circle sides and rectangle center?
-}
-*/
-
 // constructors
 
-Game::Game(Simple_window& win, int d)
+Game::Game(int d)
 {
 	cout << "Game constructed" << endl;
-	using namespace Graph_lib;
+	game_running = true;
 	
-	int x_size = win.x_max();
-	int y_size = win.y_max();
+	char input;
 	
 	difficulty = d;
-	game_play = true;
 	
-	generate_stack(difficulty);
-	
-	minimum_steps = get_minimum_steps();
-	
-	print_stack();
-	cycle();
-	cout << "You beat the game!" << endl;
-	cout << "It took you " << user_steps.size() << " steps!" << endl;
-	cout << "Score: " << calculate_score() << endl;
-	
-	//win.attach();
-	win.wait_for_button();
+	while (game_running)
+	{
+		game_play = true;
+		
+		generate_stack(difficulty);
+		
+		minimum_steps = get_minimum_steps();
+		
+		print_stack();
+		cycle();
+		game_play = false;
+		cout << "You beat the game!" << endl;
+		cout << "It took you " << user_steps.size() << " steps!" << endl;
+		cout << "Score: " << calculate_score() << endl;
+		cout << "Would you like to play again? [Y/N]";
+		cin >> input;
+		if (input == 'N' || input == 'n') { break; }
+	}
 }
