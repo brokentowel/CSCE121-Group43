@@ -2,22 +2,11 @@
 
 #include "std_lib_facilities_4.h"
 #include "classes.h"
-
-#include "Graph.h"
-#include "Simple_window.h"
 	
 int main()
 try {
 	cout << "main() called" << endl;
-	
-	if(H112 != 201401L)error("Error: incorrect std_lib_facilities_4.h version ", H112);
-	
-	using namespace Graph_lib;
-	
-	Simple_window win {Point{100, 100}, 800, 600, "FlipFlaps"};	// create game window
-	
-	//Intro intro (win);
-	
+
 	cout << "Select difficulty [2-9]: ";
 	int diff;
 	cin >> diff;

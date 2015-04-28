@@ -38,12 +38,16 @@ private:
 
 class Interface {
 public:
-	Interface(Simple_window&);
+	Interface();
 	void draw_pancakes(Simple_window& win, vector<int> pancake);
 	void draw_pancake(int x, int y, int s);
 
 private:
-
+	Window win;
+	Color pancake_color;
+	Color toasty;
+	Color blue;
+	Color dark_blue;
 };
 
 #endif
