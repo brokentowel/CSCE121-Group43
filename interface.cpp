@@ -1,5 +1,10 @@
 /*
 	This class can be used to implement all graphics into the program
+	Color Scheme:
+		pancake color 	RGB(214,151,43)
+		toasty		RGB(115,79,17)
+		blue		RGB(33,152,237)
+		dark_blue	RGB(6,83,138)
 */
 
 #include "std_lib_facilities_4.h"
