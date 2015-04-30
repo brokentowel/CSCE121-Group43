@@ -52,7 +52,7 @@ void Game::flip(int i, int c)	// c is used to gradually move from the last eleme
 void Game::cycle(void)
 {	
 	while(game_play)
-	{
+	{	
 		if (pancake_stack.size() > minimum_steps + 10) { break; }	// this would result in a negative score, at which point the game ends
 		int x;
 		cout << "Where would you like to place the spatula? ";

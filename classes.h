@@ -6,11 +6,13 @@
 #include "std_lib_facilities_4.h"
 #include "classes.h"
 #include "Graph.h"
-#include "Simple_window.h"
+#include "Window.h"
 
-class Intro {
+class Intro : public Graph_lib::Window {
 public:
-	Intro(Simple_window&);
+	Intro(int w, int h, const String& s);// : Graph_lib::Window::Window(w, h, s);
+private:
+	
 };
 
 class Game {
@@ -36,18 +38,17 @@ private:
 	int minimum_steps;
 };
 
-class Interface {
+class Interface {//: public Graph_lib::Window {
 public:
-	Interface();
-	void draw_pancakes(Simple_window& win, vector<int> pancake);
+	Interface(int w, int h, const String& s);// : public Graph_lib::Window::Window(p, w, h, s);
+	void draw_pancakes(Window& win, vector<int> pancake);
 	void draw_pancake(int x, int y, int s);
+	void draw_background(void);
 
 private:
 	Window win;
-	Color pancake_color;
-	Color toasty;
-	Color blue;
-	Color dark_blue;
+	int window_height;
+	int window_width;
 };
 
 #endif

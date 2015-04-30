@@ -6,6 +6,8 @@
 int main()
 try {
 	cout << "main() called" << endl;
+	
+	Intro start {800, 600, "FlipFlaps"};
 
 	cout << "Select difficulty [2-9]: ";
 	int diff;
