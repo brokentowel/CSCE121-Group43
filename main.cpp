@@ -1,22 +1,19 @@
-// game screen size is 800x600
+// main.cpp
+// game screen size is 800 x 600
 
-#include "std_lib_facilities_4.h"
 #include "classes.h"
+#include "std_lib_facilities_4.h"
+
+#include "GUI.h"
 #include "Graph.h"
-#include "Window.h"
 	
 int main()
 try {
-	cout << "main() called" << endl;
-
-	using namespace Graph_lib;
+	Intro introduction(800, 600, "FlipFlaps");
+	return gui_main();
 	
+	/*
 	Intro win {Point{100, 100}, 800, 600, "FlipFlaps"};
-	
-	Rectangle r {Point{0, 0}, 800, 600};
-	r.set_color(Color::white);
-	win.attach(r);
-	win.draw(r);
 	
 	cout << "Select difficulty [2-9]: ";
 	int diff;
@@ -26,8 +23,7 @@ try {
 		Game game(diff);
 	else
 		cout << "wrong difficulty entered" << endl;
-
-    return 0;
+	*/
 }
 
 catch(exception& e) {

@@ -5,14 +5,20 @@
 
 #include "std_lib_facilities_4.h"
 #include "classes.h"
-#include "Graph.h"
-#include "Window.h"
 
-class Intro : Graph_lib::Window {
-public:
-    Intro(Point xy, int w, int h, const string& title );
+#include "Window.h"
+#include "Graph.h"
+#include "GUI.h"
+
+using namespace Graph_lib;
+
+struct Intro : Graph_lib::Window
+{
+	Intro(int, int, const string&);
 private:
-	
+	void quit();
+	static void cb_quit(Address, Address);
+	Button to_quit;
 };
 
 class Game {
@@ -41,12 +47,11 @@ private:
 class Interface {//: public Graph_lib::Window {
 public:
 	Interface(int w, int h, const String& s);// : public Graph_lib::Window::Window(p, w, h, s);
-	void draw_pancakes(Window& win, vector<int> pancake);
+	void draw_pancakes(vector<int> pancake);
 	void draw_pancake(int x, int y, int s);
 	void draw_background(void);
 
 private:
-	Window win;
 	int window_height;
 	int window_width;
 };
