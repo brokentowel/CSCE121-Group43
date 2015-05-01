@@ -10,7 +10,7 @@
 int main()
 try {
 	Intro introduction(800, 600, "FlipFlaps");
-	return gui_main();
+	return gui_main();								// keeps the window open
 	
 	/*
 	Intro win {Point{100, 100}, 800, 600, "FlipFlaps"};

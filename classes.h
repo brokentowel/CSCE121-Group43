@@ -10,15 +10,25 @@
 #include "Graph.h"
 #include "GUI.h"
 
+
+
 using namespace Graph_lib;
 
 struct Intro : Graph_lib::Window
 {
 	Intro(int, int, const string&);
 private:
+	void draw_background();
+	
 	void quit();
 	static void cb_quit(Address, Address);
+
+	Rectangle background;
+	Ellipse pancake;
+	Text title;
+	
 	Button to_quit;
+	Rectangle quit_button;
 };
 
 class Game {
