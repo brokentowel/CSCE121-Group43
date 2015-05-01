@@ -2,13 +2,22 @@
 
 #include "std_lib_facilities_4.h"
 #include "classes.h"
+#include "Graph.h"
+#include "Window.h"
 	
 int main()
 try {
 	cout << "main() called" << endl;
-	
-	Intro start {800, 600, "FlipFlaps"};
 
+	using namespace Graph_lib;
+	
+	Intro win {Point{100, 100}, 800, 600, "FlipFlaps"};
+	
+	Rectangle r {Point{0, 0}, 800, 600};
+	r.set_color(Color::white);
+	win.attach(r);
+	win.draw(r);
+	
 	cout << "Select difficulty [2-9]: ";
 	int diff;
 	cin >> diff;

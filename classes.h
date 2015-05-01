@@ -8,9 +8,9 @@
 #include "Graph.h"
 #include "Window.h"
 
-class Intro : public Graph_lib::Window {
+class Intro : Graph_lib::Window {
 public:
-	Intro(int w, int h, const String& s);// : Graph_lib::Window::Window(w, h, s);
+    Intro(Point xy, int w, int h, const string& title );
 private:
 	
 };

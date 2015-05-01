@@ -47,4 +47,13 @@ Interface::Interface(int w, int h, const String& s)// : Graph_lib::Window::Windo
 
 // smallest pancake has a width of 200, and increases by 30
 // 200, 230, 260, 290, 320, 350, 380, 410, 440, 470
+
+
+Color pancake_color(fl_rgb_color(214, 151, 43));
+	Color toasty(fl_rgb_color(115, 79, 17));
+	Color blue(fl_rgb_color(33, 152, 237));
+	Color dark_blue(fl_rgb_color(6, 83, 138));
+	
+	Rectangle r {Point{0, 0}, 800, 600};
+	r.set_color(blue);
 */
