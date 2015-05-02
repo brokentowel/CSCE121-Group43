@@ -1,21 +1,20 @@
 #include "std_lib_facilities_4.h"
 
+class player
+{
+  public:
+	string initials; int score;
+	void set_init();
+	void get_init();
+	void set_score();
+	void get_score();
+};
+}
 /*
 // handles the score system and the leaderboard elements
 class leaderboard
 {
-    // data structure for scores with initials, consider using an enumeration of structs to hold position
-    struct score_entry { string initials; int score; };
-    
-    // function to create a score_entry
-    void create_user(string& init, int p) 
-    {
-    	
-    }
-    
-    // function for comparing two score_entry
-    // bool is_lower(const score_entry& x, const score_entry& x) { return x.score < y.score; }
-    
+  public:
     // vector to hold scores in position
     vector<score_entry> scores[6];
     
@@ -46,11 +45,17 @@ class leaderboard
         }        
 	ost.close()	
        
-    }
+    };
    
 //create a leaderboard window  that pops up until user closes it    
-  
-
+leaderboard_window::leaderboard_window(Point p, int w, int h, const string& t)
+	:Window(p,w,h,t),
+	to_quit(Point(360,460),80,40,"QUIT", cb_quit),
+	quit_button(Point(360,460),80,40)
+{
+	
+}
+	}
     
     // returns initals of certain score
     string get_initials() { return score_entry.initials; }
