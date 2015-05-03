@@ -23,9 +23,8 @@ struct Splash_screen : Graph_lib::Window {
 protected:
     //something to set the color of the window/background to c_cyan
     // <code>
-    
     Button quit_button;
-    bool quit_pushed;
+	bool quit_pushed;
     Button rules_button;     // the "rules" button  HINT(we can cover the buttons with shapes and they still work!)
     bool rules_pushed;     // implementation detail
     Button play_button;     //button to start game
@@ -33,14 +32,16 @@ protected:
     Button ldr_button;      //button to open current leaderboard window
     bool ldr_pushed;
 
+	static void cb_quit(Address, Address);
     static void cb_rules(Address, Address); // callback for play_button
     static void cb_play(Address, Address); // callback for play_button
     static void cb_ldr(Address, Address); // callback for play_button
     
     void quit();
-    void rules();            // action to be done when next_button is pressed
+	void rules();            // action to be done when next_button is pressed
     bool play();
     void ldr();
+	
 
 };
 
