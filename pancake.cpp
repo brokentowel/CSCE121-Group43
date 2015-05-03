@@ -1,6 +1,9 @@
 #include "Graph.h"
 #include "std_lib_facilities_4a.h"
 //create class pancake
+//ch14.3.2 maybe use 	struct Circle : Shape{/*...*/};
+//	or		class Circle : public Shape{public:/*...*/};
+//	that way we can inherit all the functions of shape or override them
 class Pancake {
 	int width, height; 
 	public: 
