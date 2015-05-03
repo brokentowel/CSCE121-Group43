@@ -35,12 +35,14 @@ void Splash_screen::quit()
 void Splash_screen::rules()
 {
     rules_pushed = true;
+    //open_rules();
 }
 //------------------------------------------------------------------------------
 bool Splash_screen::play()
 {
 	hide();
     play_pushed = true;
+    //start_game();
 }
 //------------------------------------------------------------------------------
 void Splash_screen::ldr()
