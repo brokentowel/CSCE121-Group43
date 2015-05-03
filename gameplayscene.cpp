@@ -27,7 +27,7 @@ spatula6_pushed(false),
 spatula7(Point(0, 320), 50, 30, "7", cb_spatula7),
 spatula7_pushed(false),
 spatula8(Point(0, 280), 50, 30, "8", cb_spatula8),
-spatula8_pushed(false),
+spatula8_pushed(false)
 {
 	attach(quit_button);
 	attach(spatula1);
