@@ -24,6 +24,8 @@ protected:
     //something to set the color of the window/background to c_cyan
     // <code>
     
+    Button quit_button;
+    bool quit_pushed;
     Button rules_button;     // the "rules" button  HINT(we can cover the buttons with shapes and they still work!)
     bool rules_pushed;     // implementation detail
     Button play_button;     //button to start game
@@ -35,6 +37,7 @@ protected:
     static void cb_play(Address, Address); // callback for play_button
     static void cb_ldr(Address, Address); // callback for play_button
     
+    void quit();
     void rules();            // action to be done when next_button is pressed
     bool play();
     void ldr();
