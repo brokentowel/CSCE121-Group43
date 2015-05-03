@@ -11,7 +11,6 @@ using namespace Graph_lib;
 gameplayscene::gameplayscene(Point xy, int w, int h, const string& title) :
 Window(xy, w, h, title),
 quit_button(Point(729, 0), 70, 30, "Quit", cb_quit),
-[](Address, Address pw){reference_to<gameplayscene>(pw).quit();},
 spatula1(Point(0, 560), 50, 30, "1", cb_spatula1),
 spatula1_pushed(false),
 spatula2(Point(0, 520), 50, 30, "2", cb_spatula2),
