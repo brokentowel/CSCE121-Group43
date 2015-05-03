@@ -1,9 +1,11 @@
 #include "Graph.h"
-#include "std_lib_facilities_4a.h"
+#include "std_lib_facilities_4.h"
+
 //create class pancake
 //ch14.3.2 maybe use 	struct Circle : Shape{/*...*/};
 //	or		class Circle : public Shape{public:/*...*/};
 //	that way we can inherit all the functions of shape or override them
+/*
 class Pancake {
 	int width, height; 
 	public: 
@@ -17,3 +19,4 @@ Pancake::Pancake(int w) {
 	Graph_lib::Rectangle unburnt(Point(300,40),w,20);
 	Graph_lib::Rectangle burnt(Point(300,20),w,20);
 };
+*/

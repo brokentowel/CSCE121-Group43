@@ -34,6 +34,7 @@ private:
 class Game {
 public:
 	Game(int);
+	void new_player(String& s);
 	void set_difficulty(int);
 	void generate_stack(int);
 	void print_stack(void);
@@ -44,6 +45,8 @@ public:
 	void undo(void);
 	int get_minimum_steps();
 	int calculate_score();
+	
+	vector<int> get_stack(void);
 
 private:
 	vector<int> pancake_stack;	// assume index 0 to be top of stack

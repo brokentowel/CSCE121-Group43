@@ -70,6 +70,8 @@ protected:
 	void spatula6();
 	void spatula7();
 	void spatula8();
+	
+	void draw_pancake(int y, int size);
 
 };
 

@@ -5,12 +5,14 @@
 #include <chrono>
 #include "score_entry.h"
 
+/*
 //create new player
-void Game::new_player(string& s)
+void Game::new_player(String& s)
 {
-	score_entry new;
-	new.initials = s;
+	score_entry player_score = new score_entry;
+	player_score.initials = s;
 }
+*/
 
 // handles abstract game mechanics
 void Game::set_difficulty(int n)
@@ -108,6 +110,14 @@ int Game::get_minimum_steps()
 int Game::calculate_score()
 {
 	return (100 - 10 * (user_steps.size() - minimum_steps)) * difficulty;
+}
+
+// ----------------------------------------------------------------
+// methods for access
+
+vector<int> Game::get_stack()
+{
+	return pancake_stack;
 }
 
 // constructors

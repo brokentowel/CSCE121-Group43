@@ -4,40 +4,41 @@ gameplayscene.cpp
 
 #include "gameplayscene.h"
 #include "Graph.h"
+#include "Window.h"
 
 using namespace Graph_lib;
 
 //------------------------------------------------------------------------------
 
 gameplayscene::gameplayscene(Point xy, int w, int h, const string& title) :
-Window(xy, w, h, title),
-background_with_color(Point(0,0),800,600),
-quit_button(Point(729, 0), 70, 30, "Quit", cb_quit),
-quit_b(Point(729,0),70,30),
-spatula1_button(Point(0, 560), 50, 30, "1", cb_spatula1),
-spatula1_b(Point(0,560),50,30),
-spatula1_pushed(false),
-spatula2_button(Point(0, 520), 50, 30, "2", cb_spatula2),
-spatula2_b(Point(0,520),50,30),
-spatula2_pushed(false),
-spatula3_button(Point(0, 480), 50, 30, "3", cb_spatula3),
-spatula3_b(Point(0,480),50,30),
-spatula3_pushed(false),
-spatula4_button(Point(0, 440), 50, 30, "4", cb_spatula4),
-spatula4_b(Point(0,440),50,30),
-spatula4_pushed(false),
-spatula5_button(Point(0, 400), 50, 30, "5", cb_spatula5),
-spatula5_pushed(false),
-spatula5_b(Point(0,400),50,30),
-spatula6_button(Point(0, 360), 50, 30, "6", cb_spatula6),
-spatula6_b(Point(0,360),50,30),
-spatula6_pushed(false),
-spatula7_button(Point(0, 320), 50, 30, "7", cb_spatula7),
-spatula7_b(Point(0,320),50,30),
-spatula7_pushed(false),
-spatula8_button(Point(0, 280), 50, 30, "8", cb_spatula8),
-spatula8_b(Point(0,280),50,30),
-spatula8_pushed(false)
+	Window(xy, w, h, title),
+	background_with_color(Point(0,0),800,600),
+	quit_button(Point(729, 0), 70, 30, "Quit", cb_quit),
+	quit_b(Point(729,0),70,30),
+	spatula1_button(Point(0, 560), 50, 30, "1", cb_spatula1),
+	spatula1_b(Point(0,560),50,30),
+	spatula1_pushed(false),
+	spatula2_button(Point(0, 520), 50, 30, "2", cb_spatula2),
+	spatula2_b(Point(0,520),50,30),
+	spatula2_pushed(false),
+	spatula3_button(Point(0, 480), 50, 30, "3", cb_spatula3),
+	spatula3_b(Point(0,480),50,30),
+	spatula3_pushed(false),
+	spatula4_button(Point(0, 440), 50, 30, "4", cb_spatula4),
+	spatula4_b(Point(0,440),50,30),
+	spatula4_pushed(false),
+	spatula5_button(Point(0, 400), 50, 30, "5", cb_spatula5),
+	spatula5_pushed(false),
+	spatula5_b(Point(0,400),50,30),
+	spatula6_button(Point(0, 360), 50, 30, "6", cb_spatula6),
+	spatula6_b(Point(0,360),50,30),
+	spatula6_pushed(false),
+	spatula7_button(Point(0, 320), 50, 30, "7", cb_spatula7),
+	spatula7_b(Point(0,320),50,30),
+	spatula7_pushed(false),
+	spatula8_button(Point(0, 280), 50, 30, "8", cb_spatula8),
+	spatula8_b(Point(0,280),50,30),
+	spatula8_pushed(false)
 {
 	background_with_color.set_fill_color(Color::cyan);
 	attach(background_with_color);
@@ -188,3 +189,10 @@ void gameplayscene::cb_spatula8(Address, Address h)
 }
 
 //------------------------------------------------------------------------------
+
+void gameplayscene::draw_pancake(int y, int size)
+{
+	Ellipse e {Point(400, y), size*30+170, size*3+17};
+	e.set_fill_color(Color::yellow);
+	e.set_color(Color::yellow);
+}
