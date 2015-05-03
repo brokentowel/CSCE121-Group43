@@ -14,7 +14,6 @@ using namespace Graph_lib;
 Splash_screen::Splash_screen(Point xy, int w, int h, const string& title) :
     Window(xy,w,h,title),
     quit_button(Point(729,0), 70, 30, "Quit", cb_quit),
-         [](Address, Address pw){reference_to<Splash_screen>(pw).quit();},
     rules_button(Point(210,540), 100, 30, "Rules", cb_rules),
     rules_pushed(false),
     play_button(Point(350,540), 100, 30, "Play", cb_play),
@@ -71,6 +70,12 @@ bool Splash_screen::wait_for_button() //need to get red x to work
 }
 
 //------------------------------------------------------------------------------
+void Splash_screen::cb_quit(Address, Address pw)
+{  
+    reference_to<Splash_screen>(pw).quit();    
+}
+
+//-------------------------------------------------------------------
 
 void Splash_screen::cb_rules(Address, Address a)
 // call Simple_window::rules() for the window located at a
