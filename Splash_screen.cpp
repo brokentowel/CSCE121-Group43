@@ -12,6 +12,8 @@ using namespace Graph_lib;
 
 Splash_screen::Splash_screen(Point xy, int w, int h, const string& title) :
     Window(xy,w,h,title),
+    quit_button(Point(729,0), 70, 30, "Quit", cb_quit),
+         [](Address, Address pw){reference_to<Splash_screen>(pw).quit();},
     rules_button(Point(210,540), 100, 30, "Rules", cb_rules),
     rules_pushed(false),
     play_button(Point(350,540), 100, 30, "Play", cb_play),
@@ -19,43 +21,42 @@ Splash_screen::Splash_screen(Point xy, int w, int h, const string& title) :
     ldr_button(Point(490,540), 100, 30, "Leaderboard", cb_ldr),
     ldr_pushed(false)
 {
+    attach(quit_button);
     attach(rules_button);
     attach(play_button);
     attach(ldr_button);
 }
-
+//------------------------------------------------------------------------------
+void Splash_screen::quit()
+{
+    hide();
+}
 //------------------------------------------------------------------------------
 void Splash_screen::rules()
 {
     rules_pushed = true;
-    //forward = true;
-    //return forward;
 }
 //------------------------------------------------------------------------------
 bool Splash_screen::play()
 {
     play_pushed = true;
-    //forward = true;
-    //return forward;
 }
 //------------------------------------------------------------------------------
 void Splash_screen::ldr()
 {
     ldr_pushed = true;
-    //forward = true;
-    //return forward;
 }
 //------------------------------------------------------------------------------ 
 
-bool Splash_screen::wait_for_button()
+bool Splash_screen::wait_for_button() //need to get red x to work
 {
     show();
-    //button_pushed = false;
+    quit_pushed = false;
 #if 1
     // Simpler handler
     while (!rules_pushed && !play_pushed && !ldr_pushed) Fl::wait();
     Fl::redraw();
-#else if 0
+#else
     // To handle the case where the user presses the X button in the window frame
     // to kill the application, change the condition to 0 to enable this branch.
     Fl::run();
