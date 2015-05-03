@@ -11,32 +11,32 @@ using namespace Graph_lib;
 gameplayscene::gameplayscene(Point xy, int w, int h, const string& title) :
 Window(xy, w, h, title),
 quit_button(Point(729, 0), 70, 30, "Quit", cb_quit),
-spatula1(Point(0, 560), 50, 30, "1", cb_spatula1),
+spatula1_button(Point(0, 560), 50, 30, "1", cb_spatula1),
 spatula1_pushed(false),
-spatula2(Point(0, 520), 50, 30, "2", cb_spatula2),
+spatula2_button(Point(0, 520), 50, 30, "2", cb_spatula2),
 spatula2_pushed(false),
-spatula3(Point(0, 480), 50, 30, "3", cb_spatula3),
+spatula3_button(Point(0, 480), 50, 30, "3", cb_spatula3),
 spatula3_pushed(false),
-spatula4(Point(0, 440), 50, 30, "4", cb_spatula4),
+spatula4_button(Point(0, 440), 50, 30, "4", cb_spatula4),
 spatula4_pushed(false),
-spatula5(Point(0, 400), 50, 30, "5", cb_spatula5),
+spatula5_button(Point(0, 400), 50, 30, "5", cb_spatula5),
 spatula5_pushed(false),
-spatula6(Point(0, 360), 50, 30, "6", cb_spatula6),
+spatula6_button(Point(0, 360), 50, 30, "6", cb_spatula6),
 spatula6_pushed(false),
-spatula7(Point(0, 320), 50, 30, "7", cb_spatula7),
+spatula7_button(Point(0, 320), 50, 30, "7", cb_spatula7),
 spatula7_pushed(false),
-spatula8(Point(0, 280), 50, 30, "8", cb_spatula8),
+spatula8_button(Point(0, 280), 50, 30, "8", cb_spatula8),
 spatula8_pushed(false)
 {
 	attach(quit_button);
-	attach(spatula1);
-	attach(spatula2);
-	attach(spatula3);
-	attach(spatula4);
-	attach(spatula5);
-	attach(spatula6);
-	attach(spatula7);
-	attach(spatula8);
+	attach(spatula1_button);
+	attach(spatula2_button);
+	attach(spatula3_button);
+	attach(spatula4_button);
+	attach(spatula5_button);
+	attach(spatula6_button);
+	attach(spatula7_button);
+	attach(spatula8_button);
 }
 //------------------------------------------------------------------------------
 void gameplayscene::quit()
