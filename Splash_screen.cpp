@@ -12,11 +12,11 @@ using namespace Graph_lib;
 
 Splash_screen::Splash_screen(Point xy, int w, int h, const string& title) :
     Window(xy,w,h,title),
-    rules_button(Point(255,560), 70, 20, "Rules", cb_rules),
+    rules_button(Point(210,540), 100, 30, "Rules", cb_rules),
     rules_pushed(false),
-    play_button(Point(365,560), 70, 20, "Play", cb_play),
+    play_button(Point(350,540), 100, 30, "Play", cb_play),
     play_pushed(false),
-    ldr_button(Point(475,560), 70, 20, "Leaderboard", cb_ldr),
+    ldr_button(Point(490,540), 100, 30, "Leaderboard", cb_ldr),
     ldr_pushed(false)
 {
     attach(rules_button);
