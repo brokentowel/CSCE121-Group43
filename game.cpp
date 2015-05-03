@@ -3,6 +3,14 @@
 #include "find_solution.h"
 #include <random>
 #include <chrono>
+#include "score_entry.h"
+
+//create new player
+void Game::new_player(string& s)
+{
+	score_entry new;
+	new.initials = s;
+}
 
 // handles abstract game mechanics
 void Game::set_difficulty(int n)
