@@ -28,39 +28,39 @@ Splash_screen::Splash_screen(Point xy, int w, int h, const string& title) :
 void Splash_screen::rules()
 {
     rules_pushed = true;
-    forward = true;
-    return forward;
+    //forward = true;
+    //return forward;
 }
 //------------------------------------------------------------------------------
 bool Splash_screen::play()
 {
     play_pushed = true;
-    forward = true;
-    return forward;
+    //forward = true;
+    //return forward;
 }
 //------------------------------------------------------------------------------
 void Splash_screen::ldr()
 {
     ldr_pushed = true;
-    forward = true;
-    return forward;
+    //forward = true;
+    //return forward;
 }
 //------------------------------------------------------------------------------ 
 
-bool Simple_window::wait_for_button()
+bool Splash_screen::wait_for_button()
 {
     show();
-    button_pushed = false;
+    //button_pushed = false;
 #if 1
     // Simpler handler
     while (!rules_pushed && !play_pushed && !ldr_pushed) Fl::wait();
     Fl::redraw();
-#else
+#else if 0
     // To handle the case where the user presses the X button in the window frame
     // to kill the application, change the condition to 0 to enable this branch.
     Fl::run();
 #endif
-    return button_pushed;
+    //return button_pushed;
 }
 
 //------------------------------------------------------------------------------
