@@ -99,7 +99,6 @@ bool gameplayscene::wait_for_button() //need to get red x to work
 //------------------------------------------------------------------------------
 
 void gameplayscene::cb_spatula1(Address, Address a)
-// call Simple_window::rules() for the window located at a
 {
 	reference_to<gameplayscene>(a).spatula1();
 }
@@ -107,7 +106,6 @@ void gameplayscene::cb_spatula1(Address, Address a)
 //------------------------------------------------------------------------------
 
 void gameplayscene::cb_spatula2(Address, Address b)
-// call Simple_window::play() for the window located at b
 {
 	reference_to<gameplayscene>(b).spatula2();
 }
@@ -115,7 +113,6 @@ void gameplayscene::cb_spatula2(Address, Address b)
 //------------------------------------------------------------------------------
 
 void gameplayscene::cb_spatula3(Address, Address c)
-// call Simple_window::ldr() for the window located at c
 {
 	reference_to<gameplayscene>(c).spatula3();
 }
@@ -123,7 +120,6 @@ void gameplayscene::cb_spatula3(Address, Address c)
 //------------------------------------------------------------------------------
 
 void gameplayscene::cb_spatula4(Address, Address d)
-// call Simple_window::ldr() for the window located at c
 {
 	reference_to<gameplayscene>(d).spatula4();
 }
@@ -131,7 +127,6 @@ void gameplayscene::cb_spatula4(Address, Address d)
 //------------------------------------------------------------------------------
 
 void gameplayscene::cb_spatula5(Address, Address e)
-// call Simple_window::ldr() for the window located at c
 {
 	reference_to<gameplayscene>(e).spatula5();
 }
@@ -139,7 +134,6 @@ void gameplayscene::cb_spatula5(Address, Address e)
 //------------------------------------------------------------------------------
 
 void gameplayscene::cb_spatula6(Address, Address f)
-// call Simple_window::ldr() for the window located at c
 {
 	reference_to<gameplayscene>(f).spatula6();
 }
@@ -147,7 +141,6 @@ void gameplayscene::cb_spatula6(Address, Address f)
 //------------------------------------------------------------------------------
 
 void gameplayscene::cb_spatula7(Address, Address g)
-// call Simple_window::ldr() for the window located at c
 {
 	reference_to<gameplayscene>(g).spatula7();
 }
@@ -155,7 +148,6 @@ void gameplayscene::cb_spatula7(Address, Address g)
 //------------------------------------------------------------------------------
 
 void gameplayscene::cb_spatula8(Address, Address h)
-// call Simple_window::ldr() for the window located at c
 {
 	reference_to<gameplayscene>(h).spatula8();
 }
