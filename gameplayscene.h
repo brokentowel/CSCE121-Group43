@@ -1,5 +1,5 @@
-#ifndef GameplayH_GUARD
-#define GameplayH_GUARD
+#ifndef gameplaysceneH_GUARD
+#define gameplaysceneH_GUARD
 
 #include "GUI.h"    // for Simple_window only (doesn't really belong in Window.h)
 #include "Graph.h"
@@ -25,21 +25,21 @@ protected:
 
 	Button quit_button;
 	bool quit_pushed;
-	Button spatula1;     //spatula button
+	Button spatula1_button;     //spatula button
 	bool spatula1_pushed;     
-	Button spatula2;     
+	Button spatula2_button;     
 	bool spatula2_pushed;
-	Button spatula3;      
+	Button spatula3_button;      
 	bool spatula3_pushed;
-	Button spatula4;
+	Button spatula4_button;
 	bool spatula4_pushed;
-	Button spatula5;
+	Button spatula5_button;
 	bool spatula5_pushed;
-	Button spatula6;
+	Button spatula6_button;
 	bool spatula6_pushed;
-	Button spatula7;
+	Button spatula7_button;
 	bool spatula7_pushed;
-	Button spatula8;
+	Button spatula8_button;
 	bool spatula8_pushed;
 
 	static void cb_quit(Address, Address); // callback for play_button
