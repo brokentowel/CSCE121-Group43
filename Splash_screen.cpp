@@ -6,7 +6,7 @@
 
 #include "Splash_screen.h"
 #include "Leaderboard_window.h"
-#include "gameplayscene.cpp"
+#include "gameplayscene.h"
 
 using namespace Graph_lib;
 
@@ -43,7 +43,8 @@ bool Splash_screen::play()
 {
 	hide();
     play_pushed = true;
-    //start_game();
+    gameplayscene gameplay{Point{100,100},800,600,"Gameplay"};
+    gameplay.wait_for_button();
 }
 //------------------------------------------------------------------------------
 void Splash_screen::ldr()
