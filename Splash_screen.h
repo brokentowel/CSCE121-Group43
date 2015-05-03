@@ -4,21 +4,23 @@
 #include "GUI.h"    // for Simple_window only (doesn't really belong in Window.h)
 #include "Graph.h"
 
+/*
 Color c_pancake(fl_rgb_color(255, 218, 148));
 Color c_pancake_outline(fl_rgb_color(191, 163, 111));
 Color c_cyan(fl_rgb_color(112, 186, 235));
 Color c_dark_blue(fl_rgb_color(6, 83, 138));
+*/
 
 using namespace Graph_lib;
 
 //------------------------------------------------------------------------------
 
-struct Simple_window : Graph_lib::Window {
-    Simple_window(Point xy, int w, int h, const string& title );
+struct Splash_screen : Graph_lib::Window {
+    Splash_screen(Point xy, int w, int h, const string& title );
 
     bool wait_for_button(); // simple event loop
 
-private:
+protected:
     //something to set the color of the window/background to c_cyan
     // <code>
     
