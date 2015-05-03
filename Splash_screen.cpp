@@ -5,6 +5,7 @@
 */
 
 #include "Splash_screen.h"
+#include "Leaderboard_window.h"
 
 using namespace Graph_lib;
 
@@ -48,6 +49,8 @@ bool Splash_screen::play()
 void Splash_screen::ldr()
 {
     ldr_pushed = true;
+    Leaderboard_window leaders{Point{100,100},200,300,"Hi-Scores"};
+    leaders.wait_for_button();
 }
 //------------------------------------------------------------------------------ 
 
