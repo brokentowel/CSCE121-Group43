@@ -19,10 +19,19 @@ struct gameplayscene : Graph_lib::Window {
 	gameplayscene(Point xy, int w, int h, const string& title);
 
 	bool wait_for_button(); // simple event loop
-
+	Rectangle quit_b;
+	Rectangle spatula1_b;
+	Rectangle spatula2_b;
+	Rectangle spatula3_b;
+	Rectangle spatula4_b;
+	Rectangle spatula5_b;
+	Rectangle spatula6_b;
+	Rectangle spatula7_b;
+	Rectangle spatula8_b;
+	Rectangle background_with_color;
+	
 protected:
 	//set window background color to cyan <code>
-	Rectangle background;
 	Button quit_button;
 	bool quit_pushed;
 	Button spatula1_button;     //spatula button
