@@ -48,14 +48,11 @@ void gameplayscene::quit()
 void gameplayscene::spatula1()
 {
 	spatula1_pushed = true;
-	//open_rules();
 }
 //------------------------------------------------------------------------------
 bool gameplayscene::spatula2()
 {
-	hide();
 	spatula2_pushed = true;
-	//start_game();
 }
 //------------------------------------------------------------------------------
 void gameplayscene::spatula3()
