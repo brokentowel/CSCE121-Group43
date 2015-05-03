@@ -96,6 +96,10 @@ bool gameplayscene::wait_for_button() //need to get red x to work
 }
 
 //------------------------------------------------------------------------------
+void gameplayscene::cb_quit(Address, Address pw)
+{
+	reference_to<gameplayscene>(pw).quit;
+}
 
 void gameplayscene::cb_spatula1(Address, Address a)
 {
