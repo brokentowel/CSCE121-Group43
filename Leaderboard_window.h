@@ -9,7 +9,7 @@ using namespace Graph_lib;
 //------------------------------------------------------------------------------
 
 struct Leaderboard_window : Graph_lib::Window {
-    Leaderboard(Point xy, int w, int h, const string& title );
+    Leaderboard_window(Point xy, int w, int h, const string& title );
 	
     bool wait_for_button(); // simple event loop
 
