@@ -92,6 +92,7 @@ void Game::undo()
 // returns the minimum amount of steps to complete the game
 int Game::get_minimum_steps()
 {
+	//Causes error, maybe dereference the pointer?
 	return find_solution(pancake_stack)->size();	// since find_solution() returns a pointer to an array, we must use -> to access the member function
 }
 
