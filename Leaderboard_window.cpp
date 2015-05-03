@@ -5,6 +5,7 @@
 */
 
 #include "Leaderboard_window.h"
+#include "Splash_screen.h"
 
 using namespace Graph_lib;
 
@@ -12,10 +13,15 @@ using namespace Graph_lib;
 
 Leaderboard_window::Leaderboard_window(Point xy, int w, int h, const string& title) :
     Window(xy,w,h,title),
-    done_button(Point(65,100), 70, 30, "Done", cb_done),
-         [](Address, Address pw){reference_to<Leaderboard_window>(pw).done();},
+    done_button(Point(65,100), 70, 30, "Done", cb_done)
 {
 	attach(done_button);
+}
+
+//------------------------------------------------------------------------------
+void Leaderboard_window::cb_done(Address, Address pw)
+{  
+    reference_to<Leaderboard_window>(pw).done();    
 }
 
 //------------------------------------------------------------------------------
@@ -23,7 +29,9 @@ void Leaderboard_window::done()
 {
     done_pushed = true;
 	hide();
-	//return to SPLASH SCREEN()
+	hide();
+	Splash_screen splash(Point(100,200),800,600,"Flipjack");
+    splash.wait_for_button();
 }
 //------------------------------------------------------------------------------
 
