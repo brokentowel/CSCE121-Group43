@@ -6,6 +6,7 @@
 
 #include "Splash_screen.h"
 #include "Leaderboard_window.h"
+#include "gameplayscene.cpp"
 
 using namespace Graph_lib;
 
