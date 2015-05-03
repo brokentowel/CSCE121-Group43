@@ -22,7 +22,7 @@ struct gameplayscene : Graph_lib::Window {
 
 protected:
 	//set window background color to cyan <code>
-
+	Rectangle background;
 	Button quit_button;
 	bool quit_pushed;
 	Button spatula1_button;     //spatula button
