@@ -6,10 +6,12 @@ class Leaderboard{
 public:
     bool is_lower(const score_entry& x, const score_entry& y) { return x.score < y.score; }
 	
-    vector<score_entry> get_leaderboard()
-    {
-        vector<score_entry> scores[6];
-    //read current leaderboard from leaderboard.txt
+
+//-------------------------------------------------------------------------------------    
+    void set_leaderboard(score_entry &s)
+    {	
+    	vector<score_entry> scores[6];
+	//read current leaderboard from leaderboard.txt
     	ifstream ist {"scores.txt"}; // ist reads from the file named iname
     	if (!ist) error("can't open input file ");
     	string initials;
@@ -20,12 +22,7 @@ public:
     	    scores.push_back(score_entry{initials,score});
     	}
     	ist.close();
-    }
-//-------------------------------------------------------------------------------------    
-    void set_leaderboard(score_entry &s)
-    {
-
-    	vector<score_entry> scores =  get_leaderboard();
+    	
     	//write the top 5 scores back to the txt file
     	ofstream ost {"scores.txt"};
     	scores[6]=s;
@@ -53,9 +50,9 @@ public:
     	ist.close();	
 
         //create a leaderboard window  that pops up until user closes it    200x300 window of just leaderboard
-        leaderboard_window win_ldr(Point{100,100},250,300);
+        Leaderboard_window win_ldr(Point{100,100},250,300);
         {
-        	vector<score_entry> ldr = get_leaderboard();
+        	
         	//can for loops write in a window?
         	
         	//Text first{Point{25,25},
