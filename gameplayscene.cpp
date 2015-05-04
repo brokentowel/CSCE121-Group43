@@ -1,5 +1,5 @@
 /*
-gameplayscene.cpp
+gameplayscene.cpp Mine
 */
 
 #include "std_lib_facilities_4.h"
@@ -16,7 +16,7 @@ using namespace Graph_lib;
 
 //------------------------------------------------------------------------------
 
-gameplayscene::gameplayscene(Point xy, int w, int h, const string& title) :
+gameplayscene::gameplayscene(Point xy, int w, int h, const string& title, int d) :
 	Window(xy, w, h, title),
 	background_with_color(Point(0,0),800,600),
 	quit_button(Point(729, 0), 70, 30, "Quit", cb_quit),
@@ -290,13 +290,14 @@ void gameplayscene::cb_spatula8(Address, Address h)
 
 //------------------------------------------------------------------------------
 
+/*
 void gameplayscene::draw_pancake(int y, int size)
 {
 	Ellipse e {Point(400, y), size*30+170, size*3+17};
 	e.set_fill_color(Color::yellow);
 	e.set_color(Color::yellow);
 }
-
+*/
 /*
 //create new player
 void Game::new_player(String& s)
