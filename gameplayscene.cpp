@@ -21,6 +21,8 @@ gameplayscene::gameplayscene(Point xy, int w, int h, const string& title, int di
 	background_with_color(Point(0,0),800,600),
 	quit_button(Point(729, 0), 70, 30, "Quit", cb_quit),
 	quit_b(Point(729,0),70,30),
+	undo_button(Point(0, 0), 70, 30, "Undo", cb_undo),
+	undo_b(Point(0,0),70,30),
 	spatula1_button(Point(0, 560), 50, 30, "1", cb_spatula1),
 	spatula1_b(Point(0,560),50,30),
 	spatula1_pushed(false),
@@ -107,8 +109,11 @@ gameplayscene::gameplayscene(Point xy, int w, int h, const string& title, int di
 	attach(spatula6_button);
 	attach(spatula7_button);
 	attach(spatula8_button);
+	attach(undo_button);
 	quit_b.set_fill_color(Color::red);
 	attach(quit_b);
+	undo_b.set_fill_color(Color::green);
+	attach(undo_b);
 	spatula1_b.set_fill_color(Color::white);
 	attach(spatula1_b);
 	spatula2_b.set_fill_color(Color::white);
@@ -161,7 +166,6 @@ gameplayscene::gameplayscene(Point xy, int w, int h, const string& title, int di
 		
 		minimum_steps = get_minimum_steps();
 		
-		print_stack();
 		cycle();
 		game_play = false;
 		cout << "You beat the game!" << endl;
@@ -176,6 +180,13 @@ gameplayscene::gameplayscene(Point xy, int w, int h, const string& title, int di
 void gameplayscene::quit()
 {
 	hide();
+}
+//------------------------------------------------------------------------------
+void gameplayscene::undo()
+{
+	flip(user_steps[user_steps.size() - 1], 0);
+	user_steps.pop_back();
+	print_stack();
 }
 //------------------------------------------------------------------------------
 void gameplayscene::spatula1()
@@ -233,6 +244,11 @@ bool gameplayscene::wait_for_button() //need to get red x to work
 void gameplayscene::cb_quit(Address, Address pw)
 {
 	reference_to<gameplayscene>(pw).quit();
+}
+
+void gameplayscene::cb_undo(Address, Address q)
+{
+	reference_to<gameplayscene>(q).undo();
 }
 
 void gameplayscene::cb_spatula1(Address, Address a)
@@ -358,20 +374,27 @@ void gameplayscene::cycle(void)
 	while(game_play)
 	{	
 		if (pancake_stack.size() > minimum_steps + 10) { break; }	// this would result in a negative score, at which point the game ends
-		int x;
-		cout << "Where would you like to place the spatula? ";
-		cin >> x;
-		if(x == 0)
-			undo();
-		else
+		wait_for_button();
+		/*
 		{
 			user_steps.push_back(x - 1);
 			flip(x - 1, 0);
 			print_stack();
 			check();
 		}
+		*/
 	}
 }
+
+// TO BE USED WITH SPATULA TO ACTUALLY DO MOVE; IT FLIPS PANCAKES, X IS THE SPATULA POSITION
+/*
+void gameplayscene::move(void)
+{
+	user_steps.push_back(x - 1);
+	flip(x - 1, 0);
+	check();
+}
+*/
 
 // checks if pancake_stack array is in proper order
 void gameplayscene::check(void)
@@ -383,14 +406,6 @@ void gameplayscene::check(void)
 	}
 	
 	game_play = false;
-}
-
-// goes back a step
-void gameplayscene::undo()
-{
-	flip(user_steps[user_steps.size() - 1], 0);
-	user_steps.pop_back();
-	print_stack();
 }
 
 // returns the minimum amount of steps to complete the game
