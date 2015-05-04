@@ -1,8 +1,9 @@
-/*
+
 
 #include "std_lib_facilities_4.h"
 #include "score_entry.h"
 #include "leaderboard_window.h"
+#include "Graph.h"
 
 class Leaderboard{
 public:
@@ -56,14 +57,24 @@ public:
         leaderboard_window win_ldr(Point{100,100},250,300);
         {
         	vector<score_entry> ldr = get_leaderboard();
-        	//can for loops write in a window?
+        	string one = ldr[0].initials;
         	
-        	//Text first{Point{25,25},
+        	Rectangle bg {Point{125,125},200,275};
+        	    bg.set_fill_color(Color::black);
+		    	bg.set_color(Color::invisible);	
+	    	Text first{Point{130,130}, one};
+	    	    first.set_font(FL_COURIER_BOLD);
+	    	    first.set_font_size(22);
+	    	    first.set_color(Color::white);
+	    	win_ldr.attach(bg);
+	    	win_ldr.attach(first);
+	    	
+	    	win_ldr.wait_for_button();
+	    	return 0;
         }
     }
 };
 
 
-*/
 
 
