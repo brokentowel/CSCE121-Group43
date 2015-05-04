@@ -16,7 +16,7 @@ using namespace Graph_lib;
 //------------------------------------------------------------------------------
 
 struct gameplayscene : Graph_lib::Window {
-	gameplayscene(Point xy, int w, int h, const string& title);
+	gameplayscene(Point xy, int w, int h, const string& title, int);
 
 	bool wait_for_button(); // simple event loop
 	Rectangle quit_b;
@@ -72,6 +72,29 @@ protected:
 	void spatula8();
 	
 	void draw_pancake(int y, int size);
+	
+public:
+	// void new_player(String& s);
+	void set_difficulty(int);
+	void generate_stack(int);
+	void print_stack(void);
+	void swap(int, int);
+	void flip(int, int);
+	void cycle(void);
+	void check(void);
+	void undo(void);
+	int get_minimum_steps();
+	int calculate_score();
+	
+	vector<int> get_stack(void);
+
+private:
+	vector<int> pancake_stack;	// assume index 0 to be top of stack
+	vector<int> user_steps;
+	int difficulty;
+	bool game_play;
+	bool game_running;
+	int minimum_steps;
 
 };
 

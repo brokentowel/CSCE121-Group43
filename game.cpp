@@ -14,6 +14,7 @@ void Game::new_player(String& s)
 }
 */
 
+/*
 // handles abstract game mechanics
 void Game::set_difficulty(int n)
 {
@@ -150,3 +151,4 @@ Game::Game(int d)
 		if (input == 'N' || input == 'n') { break; }
 	}
 }
+*/

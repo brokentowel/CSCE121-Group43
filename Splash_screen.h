@@ -31,18 +31,51 @@ protected:
     bool play_pushed;
     Button ldr_button;      //button to open current leaderboard window
     bool ldr_pushed;
+	
+	Button difficulty2_button;
+	Button difficulty3_button;
+	Button difficulty4_button;
+	Button difficulty5_button;
+	Button difficulty6_button;
+	Button difficulty7_button;
+	Button difficulty8_button;
+	Button difficulty9_button;
+	bool difficulty2_pushed;
+	bool difficulty3_pushed;
+	bool difficulty4_pushed;
+	bool difficulty5_pushed;
+	bool difficulty6_pushed;
+	bool difficulty7_pushed;
+	bool difficulty8_pushed;
+	bool difficulty9_pushed;
 
 	static void cb_quit(Address, Address);
     static void cb_rules(Address, Address); // callback for play_button
     static void cb_play(Address, Address); // callback for play_button
     static void cb_ldr(Address, Address); // callback for play_button
+	
+	static void cb_difficulty2(Address, Address);
+	static void cb_difficulty3(Address, Address);
+	static void cb_difficulty4(Address, Address);
+	static void cb_difficulty5(Address, Address);
+	static void cb_difficulty6(Address, Address);
+	static void cb_difficulty7(Address, Address);
+	static void cb_difficulty8(Address, Address);
+	static void cb_difficulty9(Address, Address);
     
     void quit();
 	void rules();            // action to be done when next_button is pressed
     bool play();
     void ldr();
 	
-
+	void difficulty2();
+	void difficulty3();
+	void difficulty4();
+	void difficulty5();
+	void difficulty6();
+	void difficulty7();
+	void difficulty8();
+	void difficulty9();
 };
 
 //------------------------------------------------------------------------------
