@@ -173,7 +173,7 @@ bool Splash_screen::play()
 void Splash_screen::ldr()
 {
     ldr_pushed = true;
-    disp_leaderboard();
+    //disp_leaderboard();
     wait_for_button();
 }
 //------------------------------------------------------------------------------ 

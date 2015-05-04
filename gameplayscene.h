@@ -4,6 +4,7 @@
 #include "GUI.h"    // for Simple_window only (doesn't really belong in Window.h)
 #include "Graph.h"
 #include "std_lib_facilities_4.h"
+#include "find_solution.h"
 /*
 Color c_pancake(fl_rgb_color(255, 218, 148));
 Color c_pancake_outline(fl_rgb_color(191, 163, 111));
@@ -16,7 +17,7 @@ using namespace Graph_lib;
 //------------------------------------------------------------------------------
 
 struct gameplayscene : Graph_lib::Window {
-	gameplayscene(Point xy, int w, int h, const string& title);
+	gameplayscene(Point xy, int w, int h, const string& title, int);
 
 	bool wait_for_button(); // simple event loop
 	
@@ -45,6 +46,7 @@ struct gameplayscene : Graph_lib::Window {
 	vector<int> pancakeheights;
 	*/
 	Rectangle quit_b;
+	Rectangle undo_b;
 	Rectangle spatula1_b;
 	Rectangle spatula2_b;
 	Rectangle spatula3_b;
@@ -75,6 +77,8 @@ protected:
 	bool spatula7_pushed;
 	Button spatula8_button;
 	bool spatula8_pushed;
+	Button undo_button;
+	bool undo_pushed;
 
 	static void cb_quit(Address, Address); // callback for play_button
 	static void cb_spatula1(Address, Address); //callback for spatula button
@@ -85,6 +89,7 @@ protected:
 	static void cb_spatula6(Address, Address);
 	static void cb_spatula7(Address, Address);
 	static void cb_spatula8(Address, Address);
+	static void cb_undo(Address, Address);
 
 	void quit();
 	void spatula1();            // action to be done when spatula button is pressed
@@ -95,6 +100,30 @@ protected:
 	void spatula6();
 	void spatula7();
 	void spatula8();
+	void undo();
+	
+public:
+	// void new_player(String& s);
+	void set_difficulty(int);
+	void generate_stack(int);
+	void print_stack(void);
+	void swap(int, int);
+	void flip(int, int);
+	void cycle(void);
+	void check(void);
+	int get_minimum_steps(void);
+	int calculate_score(void);
+	void move(void);
+	
+	vector<int> get_stack(void);
+
+private:
+	vector<int> pancake_stack;	// assume index 0 to be top of stack
+	vector<int> user_steps;
+	int difficulty;
+	bool game_play;
+	bool game_running;
+	int minimum_steps;
 
 };
 
