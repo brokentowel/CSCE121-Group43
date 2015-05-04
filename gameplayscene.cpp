@@ -16,7 +16,7 @@ using namespace Graph_lib;
 
 //------------------------------------------------------------------------------
 
-gameplayscene::gameplayscene(Point xy, int w, int h, const string& title, int d) :
+gameplayscene::gameplayscene(Point xy, int w, int h, const string& title, int diff) :
 	Window(xy, w, h, title),
 	background_with_color(Point(0,0),800,600),
 	quit_button(Point(729, 0), 70, 30, "Quit", cb_quit),
@@ -146,11 +146,12 @@ gameplayscene::gameplayscene(Point xy, int w, int h, const string& title, int d)
 	pancake9.set_fill_color(Color::yellow);
 	
 	cout << "Game constructed" << endl;
+	
 	game_running = true;
 	
 	char input;
 	
-	difficulty = d;
+	difficulty = diff;
 	
 	while (game_running)
 	{
@@ -395,7 +396,7 @@ void gameplayscene::undo()
 // returns the minimum amount of steps to complete the game
 int gameplayscene::get_minimum_steps()
 {
-	//Causes error, maybe dereference the pointer?
+	cout << "dere" << endl;
 	return find_solution(pancake_stack)->size();	// since find_solution() returns a pointer to an array, we must use -> to access the member function
 }
 
