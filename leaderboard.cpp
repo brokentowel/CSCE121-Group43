@@ -6,7 +6,6 @@ class Leaderboard{
 public:
     bool is_lower(const score_entry& x, const score_entry& y) { return x.score < y.score; }
 	
-
 //-------------------------------------------------------------------------------------    
     void set_leaderboard(score_entry &s)
     {	
@@ -34,29 +33,39 @@ public:
     	ost.close();
     }
 //-------------------------------------------------------------------------------------
-    //return a vector
-    void disp_leaderboard()
-    {
-    	vector<score_entry> scores[6];
-        ifstream ist {"scores.txt"}; // ist reads from the file named iname
-    	if (!ist) error("can't open input file ");
-    	string initials;
-    	int score;
-    	while(ist >> initials >> score)//MAKE THIS A STRING STREAM INSTEAD AND FILL A WINDOW
-    	//fill a vector with leaderboard data of score and initials
-    	{
-    	    scores.push_back(score_entry{initials,score});
-    	}
-    	ist.close();	
+    	//extract each score as a line of initials and score
+	void get_leaderboard()
+	{
+		  vector<Text*> all_scores;
+		  ifstream ist {"scores.txt"}; // ist reads from the file named iname
+		  if (!ist) error("can't open input file ");
+		  string line;
+		for(int i = 0; i<5;++i)
+		{
+			getline(ist,line);
+			string temp = to_string(1+i) + ") " + line;
+			all_scores.push_back(new Text{Point{130,130+(i*25)},temp});
+			all_scores[i]->set_font_size(30);
+			all_scores[i]->set_color(Color::white);
+			attach(*scores[i]);
+		}
+		ist.close();
+	}
+void disp_leaderboard()
+     {
+           //create a leaderboard window  that pops up until user closes it    200x300 window of just leaderboard
+         Leaderboard_window win_ldr(Point{100,100},250,300)
+         {
+		Rectangle bg {Point{125,125},200,275};
+		bg.set_fill_color(Color::black);
+		bg.set_color(Color::invisible);	
 
-        //create a leaderboard window  that pops up until user closes it    200x300 window of just leaderboard
-        Leaderboard_window win_ldr(Point{100,100},250,300);
-        {
-        	
-        	//can for loops write in a window?
-        	
-        	//Text first{Point{25,25},
-        }
-    }
-};
+ 	    	win_ldr.attach(bg);
+ 	    	
+ 	    	get_leaderboard();
 
+ 	    	win_ldr.wait_for_button();
+	    	
+         }
+     }
+ };
