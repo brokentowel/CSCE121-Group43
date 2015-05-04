@@ -9,6 +9,8 @@ class Leaderboard{
 public:
 
 //-------------------------------------------------------------------------------------    
+    bool is_lower(const score_entry& x, const score_entry& x) { return x.score < y.score; }
+    
     void set_leaderboard(score_entry &s)
     {
 		vector<score_entry> scores[6];
