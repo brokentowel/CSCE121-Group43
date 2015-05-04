@@ -21,6 +21,7 @@ public:
     	    scores.push_back(score_entry{initials,score});
     	}
     	ist.close();
+    	return scores;
     }
 //-------------------------------------------------------------------------------------    
     void set_leaderboard(score_entry &s)
@@ -41,19 +42,7 @@ public:
     //return a vector
     void disp_leaderboard()
     {
-    	vector<score_entry> scores[6];
-        ifstream ist {"scores.txt"}; // ist reads from the file named iname
-    	if (!ist) error("can't open input file ");
-    	string initials;
-    	int score;
-    	while(ist >> initials >> score)//MAKE THIS A STRING STREAM INSTEAD AND FILL A WINDOW
-    	//fill a vector with leaderboard data of score and initials
-    	{
-    	    scores.push_back(score_entry{initials,score});
-    	}
-    	ist.close();	
-
-        //create a leaderboard window  that pops up until user closes it    200x300 window of just leaderboard
+          //create a leaderboard window  that pops up until user closes it    200x300 window of just leaderboard
         leaderboard_window win_ldr(Point{100,100},250,300);
         {
         	vector<score_entry> ldr = get_leaderboard();
