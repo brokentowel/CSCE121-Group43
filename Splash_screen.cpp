@@ -40,12 +40,14 @@ Splash_screen::Splash_screen(Point xy, int w, int h, const string& title) :
     play_button(Point(350,540), 100, 30, "Play", cb_play),
     play_pushed(false),
     ldr_button(Point(490,540), 100, 30, "Leaderboard", cb_ldr),
-    ldr_pushed(false)
+    ldr_pushed(false),
+	bg(Point(0, 0), "logo.jpeg")
 {
     attach(quit_button);
     attach(rules_button);
     attach(play_button);
     attach(ldr_button);
+	attach(bg);
 }
 //-------------------------------------------------------
 void Splash_screen::difficulty2()
@@ -131,6 +133,7 @@ void Splash_screen::rules_back()
 //------------------------------------------------------------------------------
 void Splash_screen::rules()
 {
+	detach(bg);
 	detach(play_button);
 	detach(ldr_button);
 	detach(rules_button);
@@ -143,6 +146,7 @@ void Splash_screen::rules()
 //------------------------------------------------------------------------------
 bool Splash_screen::play()
 {
+	detach(bg);
 	detach(play_button);
 	detach(ldr_button);
 	detach(rules_button);
@@ -172,6 +176,7 @@ bool Splash_screen::play()
 //------------------------------------------------------------------------------
 void Splash_screen::ldr()
 {
+	detach(bg);
     ldr_pushed = true;
     //disp_leaderboard();
     wait_for_button();

@@ -24,6 +24,9 @@ struct Splash_screen : Graph_lib::Window {
 protected:
     //something to set the color of the window/background to c_cyan
     // <code>
+	
+	Image bg;
+	
     Button quit_button;
 	bool quit_pushed;
     Button rules_button;     // the "rules" button  HINT(we can cover the buttons with shapes and they still work!)
