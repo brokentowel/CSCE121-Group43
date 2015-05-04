@@ -4,7 +4,7 @@
 
 class Leaderboard{
 public:
-	bool is_lower(const score_entry& x, const score_entry& x) { return x.score < y.score; }
+    bool is_lower(const score_entry& x, const score_entry& y) { return x.score < y.score; }
 	
     vector<score_entry> get_leaderboard()
     {
