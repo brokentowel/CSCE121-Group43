@@ -4,20 +4,19 @@
    Kenneth Payne		5/2/2015
 */
 
+
 #include "Leaderboard_window.h"
 #include "Splash_screen.h"
-#include "Leaderboard.h"
 
 using namespace Graph_lib;
 
 //------------------------------------------------------------------------------
 
 Leaderboard_window::Leaderboard_window(Point xy, int w, int h, const string& title) :
-    :Window(xy,w,h,title),
+    Window(xy,w,h,title),
     done_button(Point(65,100), 70, 30, "Done", cb_done)
 {
 	attach(done_button);
-	disp_leaderboard();
 }
 
 //------------------------------------------------------------------------------
@@ -52,6 +51,3 @@ bool Leaderboard_window::wait_for_button() //need to get red x to work
 #endif
     return done_pushed;
 }
-
-
-

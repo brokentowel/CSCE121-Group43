@@ -7,7 +7,7 @@
 #include "Splash_screen.h"
 #include "Leaderboard_window.h"
 #include "gameplayscene.h"
-#include "Leaderboard.h"
+#include "leaderboard.h"
 
 using namespace Graph_lib;
 
@@ -32,7 +32,10 @@ Splash_screen::Splash_screen(Point xy, int w, int h, const string& title) :
 	difficulty9_button(Point(350, 400), 100, 30, "9 - Hardest", cb_difficulty9),
 	difficulty9_pushed(false),
     quit_button(Point(729,0), 70, 30, "Quit", cb_quit),
-    rules_button(Point(210,540), 100, 30, "Rules", cb_rules),
+	quit_pushed(false),
+	rules_back_button(Point(0, 0), 800, 600, "Welcome to flipjacks! A pancake sorting brain-teaser.\n1. First enter your initials\n2. Select a difficulty (how many pancakes you want to sort)\n3. When the game begins click one of the button at the point you wish to insert a spatula and flip\n4. When you have arranged the pancake so that they are stack by decreasing size, you've finished\nTry to blah blah blah number of tries blah blah gme over", cb_rules_back),
+    rules_back_button_pushed(false),
+	rules_button(Point(210,540), 100, 30, "Rules", cb_rules),
     rules_pushed(false),
     play_button(Point(350,540), 100, 30, "Play", cb_play),
     play_pushed(false),
@@ -118,6 +121,14 @@ void Splash_screen::quit()
     hide();
 }
 //------------------------------------------------------------------------------
+void Splash_screen::rules_back()
+{
+	rules_back_button_pushed = true;
+	hide();
+	Splash_screen splash(Point(100,200),800,600,"Flipjacks dog");
+    wait_for_button();
+}
+//------------------------------------------------------------------------------
 void Splash_screen::rules()
 {
 	detach(play_button);
@@ -125,6 +136,8 @@ void Splash_screen::rules()
 	detach(rules_button);
 	detach(quit_button);
     rules_pushed = true;
+	attach(rules_back_button);
+	rules_back_button.show();
     //open_rules();
 }
 //------------------------------------------------------------------------------
@@ -167,11 +180,11 @@ void Splash_screen::ldr()
 
 bool Splash_screen::wait_for_button() //need to get red x to work
 {
-    show();
+    //show();
     quit_pushed = false;
 #if 1
     // Simpler handler
-    while ((!rules_pushed && !play_pushed && !ldr_pushed) || (!difficulty2_pushed && !difficulty3_pushed && !difficulty4_pushed && !difficulty5_pushed && !difficulty6_pushed && !difficulty7_pushed && !difficulty8_pushed && !difficulty9_pushed)) Fl::wait();
+    while ((!rules_pushed && !play_pushed && !ldr_pushed) || (!difficulty2_pushed && !difficulty3_pushed && !difficulty4_pushed && !difficulty5_pushed && !difficulty6_pushed && !difficulty7_pushed && !difficulty8_pushed && !difficulty9_pushed) || (!rules_back_button_pushed)) Fl::wait();
     Fl::redraw();
 #else
     // To handle the case where the user presses the X button in the window frame
@@ -186,6 +199,12 @@ void Splash_screen::cb_quit(Address, Address pw)
 {  
     reference_to<Splash_screen>(pw).quit();    
 }
+//------------------------------------------------------------------------------
+void Splash_screen::cb_rules_back(Address, Address rb)
+{  
+    reference_to<Splash_screen>(rb).rules_back();    
+}
+
 
 //-------------------------------------------------------------------
 

@@ -3,6 +3,7 @@
 
 #include "GUI.h"    // for Simple_window only (doesn't really belong in Window.h)
 #include "Graph.h"
+#include "Leaderboard_window.h"
 
 /*
 Color c_pancake(fl_rgb_color(255, 218, 148));
@@ -48,6 +49,9 @@ protected:
 	bool difficulty7_pushed;
 	bool difficulty8_pushed;
 	bool difficulty9_pushed;
+	
+	Button rules_back_button;
+	bool rules_back_button_pushed;
 
 	static void cb_quit(Address, Address);
     static void cb_rules(Address, Address); // callback for play_button
@@ -62,6 +66,8 @@ protected:
 	static void cb_difficulty7(Address, Address);
 	static void cb_difficulty8(Address, Address);
 	static void cb_difficulty9(Address, Address);
+	
+	static void cb_rules_back(Address, Address);
     
     void quit();
 	void rules();            // action to be done when next_button is pressed
@@ -76,6 +82,8 @@ protected:
 	void difficulty7();
 	void difficulty8();
 	void difficulty9();
+	
+	void rules_back();
 };
 
 //------------------------------------------------------------------------------

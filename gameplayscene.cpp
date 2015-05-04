@@ -411,7 +411,6 @@ void gameplayscene::check(void)
 // returns the minimum amount of steps to complete the game
 int gameplayscene::get_minimum_steps()
 {
-	cout << "dere" << endl;
 	return find_solution(pancake_stack)->size();	// since find_solution() returns a pointer to an array, we must use -> to access the member function
 }
 
