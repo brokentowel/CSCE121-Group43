@@ -18,8 +18,8 @@ protected:
 
     Button back_button;
     bool back_pushed;
-    Rectangle bg;
-    Text text;
+    //add rectangle for bg
+    //add text so we can write
 	
     static void cb_back(Address, Address);
 	
