@@ -50,8 +50,8 @@ struct Color {
     //added colors for project theme
     	pancake_color=(fl_rgb_color(214, 151, 43)),
 	toasty=(fl_rgb_color(115, 79, 17)),
-	bg_blue=(fl_rgb_color(33, 152, 237)),
-	dark_blue=(fl_rgb_color(6, 83, 138))
+	bg_blue=(fl_rgb_color(33, 152, 237))
+	//dark_blue=(fl_rgb_color(6, 83, 138))
     };
 
     enum Transparency : unsigned char { invisible = 0, visible=255 };
