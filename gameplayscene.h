@@ -4,7 +4,7 @@
 #include "GUI.h"    // for Simple_window only (doesn't really belong in Window.h)
 #include "Graph.h"
 #include "std_lib_facilities_4.h"
-#include "find_solution.h"
+#include "pancake.h"
 /*
 Color c_pancake(fl_rgb_color(255, 218, 148));
 Color c_pancake_outline(fl_rgb_color(191, 163, 111));
@@ -16,20 +16,27 @@ using namespace Graph_lib;
 
 //------------------------------------------------------------------------------
 
-struct gameplayscene : Graph_lib::Window {
-	gameplayscene(Point xy, int w, int h, const string& title, int);
+class gameplayscene :public Graph_lib::Window{
+public:
+	
+	gameplayscene(Point xy, int w, int h, const string& title, int d);
 
 	bool wait_for_button(); // simple event loop
 	
-	int a;
-	int b;
-	int c;
-	int d;
-	int e;
-	int f;
-	int g;
-	int h;
-	int i;
+	void create_stack(int diff);
+	void draw_pancakes();
+	/*
+	int h1;
+	int h2;
+	int h3;
+	int h4;
+	int h5;
+	int h6;
+	int h7;
+	int h8;
+	int h9;
+	
+	void flip(int, int);
 	
 	Rectangle pancake1;
 	Rectangle pancake2;
@@ -40,13 +47,12 @@ struct gameplayscene : Graph_lib::Window {
 	Rectangle pancake7;
 	Rectangle pancake8;
 	Rectangle pancake9;
-	/*
+	
 	vector<Rectangle> pancakeswoheight;
 	vector<Rectangle> pancakeswithheight;
 	vector<int> pancakeheights;
 	*/
 	Rectangle quit_b;
-	Rectangle undo_b;
 	Rectangle spatula1_b;
 	Rectangle spatula2_b;
 	Rectangle spatula3_b;
@@ -57,12 +63,15 @@ struct gameplayscene : Graph_lib::Window {
 	Rectangle spatula8_b;
 	Rectangle background_with_color;
 	
+	vector<int> randomize_pancakes(int diff);
+	
 protected:
 	//set window background color to cyan <code>
 	Button quit_button;
 	bool quit_pushed;
+	
 	Button spatula1_button;     //spatula button
-	bool spatula1_pushed;     
+	//bool spatula1_pushed;     
 	Button spatula2_button;     
 	bool spatula2_pushed;
 	Button spatula3_button;      
@@ -77,8 +86,6 @@ protected:
 	bool spatula7_pushed;
 	Button spatula8_button;
 	bool spatula8_pushed;
-	Button undo_button;
-	bool undo_pushed;
 
 	static void cb_quit(Address, Address); // callback for play_button
 	static void cb_spatula1(Address, Address); //callback for spatula button
@@ -89,42 +96,21 @@ protected:
 	static void cb_spatula6(Address, Address);
 	static void cb_spatula7(Address, Address);
 	static void cb_spatula8(Address, Address);
-	static void cb_undo(Address, Address);
 
 	void quit();
 	void spatula1();            // action to be done when spatula button is pressed
-	bool spatula2();
+	void spatula2();
 	void spatula3();
 	void spatula4();
 	void spatula5();
 	void spatula6();
 	void spatula7();
 	void spatula8();
-	void undo();
-	
-public:
-	// void new_player(String& s);
-	void set_difficulty(int);
-	void generate_stack(int);
-	void print_stack(void);
-	void swap(int, int);
-	void flip(int, int);
-	void cycle(void);
-	void check(void);
-	int get_minimum_steps(void);
-	int calculate_score(void);
-	void move(void);
-	
-	vector<int> get_stack(void);
 
 private:
-	vector<int> pancake_stack;	// assume index 0 to be top of stack
-	vector<int> user_steps;
-	int difficulty;
-	bool game_play;
-	bool game_running;
-	int minimum_steps;
-
+vector <pancake*> pancake_stack;	
+vector <int> randomstackintegers;
+vector <int> randompancakes;
 };
 
 //------------------------------------------------------------------------------
