@@ -9,6 +9,7 @@
 #include "GUI.h"    // for Simple_window only (doesn't really belong in Window.h)
 #include "Graph.h"
 #include "Window.h"
+#include "std_lib_facilities_4.h"
 
 using namespace Graph_lib;
 
@@ -20,6 +21,21 @@ Leaderboard_window::Leaderboard_window(Point xy, int w, int h, const string& tit
 	back_pushed(false)
 {
 	attach(back_button);
+	vector<Text*> all_scores;
+	ifstream ist {"scores.txt"}; // ist reads from the file named iname
+	if (!ist) error("can't open input file ");
+	string entry;
+	for(int i = 0; i<5;++i)
+	{
+		getline(ist, entry);
+		all_scores.push_back(new Text(Point(130,130+(i*25)),entry));
+		all_scores[i]->set_font_size(30);
+		all_scores[i]->set_color(Color::white);
+		attach(*all_scores[i]);
+	}
+	ist.close();
+
+	wait_for_button();
 }
 
 void Leaderboard_window::back()

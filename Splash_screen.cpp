@@ -36,10 +36,13 @@ Splash_screen::Splash_screen(Point xy, int w, int h, const string& title) :
     rules_back_button_pushed(false),
 	rules_button(Point(210,540), 100, 30, "Rules", cb_rules),
     rules_pushed(false),
-    play_button(Point(350,540), 100, 30, "Play", cb_play),
+    play_button(Point(350,540), 100, 30, "Play", cb_initials),
     play_pushed(false),
     ldr_button(Point(490,540), 100, 30, "Leaderboard", cb_ldr),
     ldr_pushed(false),
+	initials_box(Point(350, 450), 100, 30, "Initials:"),
+	initials_button(Point(350, 500), 100, 30, "Enter", cb_play),
+	initials_pushed(false),
 	bg(Point(0, 0), "logo.jpeg")
 {
     attach(quit_button);
@@ -137,19 +140,36 @@ void Splash_screen::rules()
 	detach(ldr_button);
 	detach(rules_button);
 	detach(quit_button);
+	
     rules_pushed = true;
+	
 	attach(rules_back_button);
 	rules_back_button.show();
-    //open_rules();
 }
 //------------------------------------------------------------------------------
-bool Splash_screen::play()
+
+void Splash_screen::play_initials()
 {
 	detach(bg);
 	detach(play_button);
 	detach(ldr_button);
 	detach(rules_button);
 	detach(quit_button);
+	
+	initials_pushed = true;
+	
+	attach(initials_button);
+	attach(initials_box);
+	initials_button.show();
+	initials_box.show();
+	
+	wait_for_button();
+}
+
+bool Splash_screen::play()
+{
+	detach(initials_button);
+	detach(initials_box);
 	
     play_pushed = true;
 	
@@ -188,7 +208,7 @@ bool Splash_screen::wait_for_button() //need to get red x to work
     quit_pushed = false;
 #if 1
     // Simpler handler
-    while ((!rules_pushed && !play_pushed && !ldr_pushed) || (!difficulty2_pushed && !difficulty3_pushed && !difficulty4_pushed && !difficulty5_pushed && !difficulty6_pushed && !difficulty7_pushed && !difficulty8_pushed && !difficulty9_pushed) || (!rules_back_button_pushed)) Fl::wait();
+    while ((!rules_pushed && !play_pushed && !ldr_pushed) || (!difficulty2_pushed && !difficulty3_pushed && !difficulty4_pushed && !difficulty5_pushed && !difficulty6_pushed && !difficulty7_pushed && !difficulty8_pushed && !difficulty9_pushed) || (!rules_back_button_pushed) || (!initials_pushed)) Fl::wait();
     Fl::redraw();
 #else
     // To handle the case where the user presses the X button in the window frame
@@ -267,4 +287,9 @@ void Splash_screen::cb_difficulty8(Address, Address d8)
 void Splash_screen::cb_difficulty9(Address, Address d9)
 {
 	reference_to<Splash_screen>(d9).difficulty9();
+}
+
+void Splash_screen::cb_initials(Address, Address i)
+{
+	reference_to<Splash_screen>(i).play_initials();
 }

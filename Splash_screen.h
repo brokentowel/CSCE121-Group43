@@ -87,6 +87,15 @@ protected:
 	void difficulty9();
 	
 	void rules_back();
+	
+	//---------------------------------------------
+	
+	In_box initials_box;
+	Button initials_button;
+	bool initials_pushed;
+	
+	static void cb_initials(Address, Address);
+	void play_initials();
 };
 
 //------------------------------------------------------------------------------
