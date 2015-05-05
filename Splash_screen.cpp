@@ -7,7 +7,6 @@
 #include "Splash_screen.h"
 #include "Leaderboard_window.h"
 #include "gameplayscene.h"
-#include "leaderboard.h"
 
 using namespace Graph_lib;
 
@@ -176,9 +175,9 @@ bool Splash_screen::play()
 //------------------------------------------------------------------------------
 void Splash_screen::ldr()
 {
-	detach(bg);
-    ldr_pushed = true;
-    //disp_leaderboard();
+	hide();
+	ldr_pushed = true;
+	Leaderboard_window leaders(Point(100,200),400,300,"Leaderboard");
     wait_for_button();
 }
 //------------------------------------------------------------------------------ 
