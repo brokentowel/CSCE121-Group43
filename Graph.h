@@ -47,6 +47,11 @@ struct Color {
         dark_blue=FL_DARK_BLUE,
         dark_magenta=FL_DARK_MAGENTA,
         dark_cyan=FL_DARK_CYAN
+    //added colors for project theme
+    	pancake_color=(fl_rgb_color(214, 151, 43));
+	toasty=(fl_rgb_color(115, 79, 17));
+	bg_blue=(fl_rgb_color(33, 152, 237));
+	dark_blue=(fl_rgb_color(6, 83, 138));
     };
 
     enum Transparency : unsigned char { invisible = 0, visible=255 };
