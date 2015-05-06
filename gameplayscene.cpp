@@ -76,15 +76,19 @@ spatula8_b(Point(0,280),50,30)
 	
 }
 //------------------------------------------------------------------------------
-void gameplayscene::testforwin()
+//checks if you won
+void gameplayscene::testforwin(void)
 {
-	
-	if (randompancakes[8]==9 && randompancakes[7]==8 && randompancakes[6]==7 && randompancakes[5]==6 && randompancakes[4]==5 && randompancakes[3]==4 && randompancakes[2]==3 && randompancakes[1]==2 && randompancakes[0]==1)
+	for (int i=0;i<=pancake_stack.size()-1;++i)
 	{
-		cout << "you win!" << "\n";
+		if (randompancakes[i]>randompancakes[i+1])
+		{
+			return;
+		}
 	}
+	cout << "you win!";
 }
-
+//create pancakes
 void gameplayscene::create_stack(int diff)
 {
 	int h = 560;
@@ -96,7 +100,7 @@ void gameplayscene::create_stack(int diff)
 	}
 	draw_pancakes();
 }
-
+//get the randomization
 vector <int> gameplayscene::randomize_pancakes(int diff){
 	for (int i = 1; i <=diff; ++i){
 		randomstackintegers.push_back(i);
@@ -128,8 +132,8 @@ void gameplayscene::flip(int x){
 		int drop = ho-80*(i-1);
 		pancake_stack[pancake_stack.size()-i]->move(0,drop);
 		pancake_stack[i-1+x]->move(0,-1*drop);
-		swap(pancake_stack[i-1+x],pancake_stack[pancake_stack.size()-i]);
-		swap(randompancakes[i-1+x],randompancakes[pancake_stack.size()-i]);
+		std::swap(pancake_stack[i-1+x],pancake_stack[pancake_stack.size()-i]);
+		std::swap(randompancakes[i-1+x],randompancakes[pancake_stack.size()-i]);
 		}
 	}
 	else if (psize % 2 == 1)
@@ -140,11 +144,12 @@ void gameplayscene::flip(int x){
 		int drop = ho-80*(i-1);
 		pancake_stack[pancake_stack.size()-i]->move(0,drop);
 		pancake_stack[i-1+x]->move(0,-1*drop);
-		swap(pancake_stack[i-1+x],pancake_stack[pancake_stack.size()-i]);
-		swap(randompancakes[i-1+x],randompancakes[pancake_stack.size()-i]);
+		std::swap(pancake_stack[i-1+x],pancake_stack[pancake_stack.size()-i]);
+		std::swap(randomstackintegers[i-1+x],randomstackintegers[pancake_stack.size()-i]);
 		}
 	}
 	redraw();
+	testforwin();
 }
 
 //------------------------------------------------------------------------------
