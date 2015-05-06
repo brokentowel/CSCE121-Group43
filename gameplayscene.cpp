@@ -9,11 +9,13 @@ using namespace Graph_lib;
 
 //------------------------------------------------------------------------------
 
-gameplayscene::gameplayscene(Point xy, int w, int h, const string& title, int d) :
+gameplayscene::gameplayscene(Point xy, int w, int h, const string& title, int d, string inititals) :
 Window(xy, w, h, title),
 background_with_color(Point(0,0),800,600),
 quit_button(Point(729, 0), 70, 30, "Quit", cb_quit),
 quit_b(Point(729,0),70,30),
+undo_button(Point(0, 0), 70, 30, "Undo", cb_undo),
+undo_b(Point(0, 0), 70, 30),
 spatula1_button(Point(0, 560), 50, 30, "1", cb_spatula1),
 spatula1_b(Point(0,560),50,30),
 //spatula1_pushed(false),
@@ -44,6 +46,7 @@ spatula8_b(Point(0,280),50,30)
 	background_with_color.set_fill_color(Color::cyan);
 	attach(background_with_color);
 	attach(quit_button);
+	attach(undo_button);
 	attach(spatula1_button);
 	attach(spatula2_button);
 	attach(spatula3_button);
@@ -55,6 +58,8 @@ spatula8_b(Point(0,280),50,30)
 	
 	quit_b.set_fill_color(Color::red);
 	attach(quit_b);
+	undo_b.set_fill_color(Color::green);
+	attach(undo_b);
 	spatula1_b.set_fill_color(Color::white);
 	attach(spatula1_b);
 	spatula2_b.set_fill_color(Color::white);
@@ -115,6 +120,15 @@ void gameplayscene::quit()
 {
 	hide();
 }
+
+void gameplayscene::undo()
+{
+	if (user_steps.size() > 0)
+	{
+		flip(user_steps[user_steps.size() - 1]);
+		user_steps.pop_back();
+	}
+}
 //------------------------------------------------------------------------------
 
 void gameplayscene::flip(int x){
@@ -147,36 +161,44 @@ void gameplayscene::flip(int x){
 //------------------------------------------------------------------------------
 void gameplayscene::spatula1()
 {
+	user_steps.push_back(0);
 	flip(0);
 }
 void gameplayscene::spatula2()
 {
+	user_steps.push_back(1);
 	flip(1);
 }
 //------------------------------------------------------------------------------
 void gameplayscene::spatula3()
 {
+	user_steps.push_back(2);
 	flip(2);
 }
 //------------------------------------------------------------------------------ 
 void gameplayscene::spatula4()
 {
+	user_steps.push_back(3);
 	flip(3);
 }
 void gameplayscene::spatula5()
 {
+	user_steps.push_back(4);
 	flip(4);
 }
 void gameplayscene::spatula6()
 {
+	user_steps.push_back(5);
 	flip(5);
 }
 void gameplayscene::spatula7()
 {
+	user_steps.push_back(6);
 	flip(6);
 }
 void gameplayscene::spatula8()
 {
+	user_steps.push_back(7);
 	flip(7);
 }
 bool gameplayscene::wait_for_button() //need to get red x to work
@@ -199,6 +221,11 @@ bool gameplayscene::wait_for_button() //need to get red x to work
 void gameplayscene::cb_quit(Address, Address pw)
 {
 	reference_to<gameplayscene>(pw).quit();
+}
+
+void gameplayscene::cb_undo(Address, Address u)
+{
+	reference_to<gameplayscene>(u).undo();
 }
 
 void gameplayscene::cb_spatula1(Address, Address a)
