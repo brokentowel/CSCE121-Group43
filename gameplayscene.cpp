@@ -9,13 +9,11 @@ using namespace Graph_lib;
 
 //------------------------------------------------------------------------------
 
-gameplayscene::gameplayscene(Point xy, int w, int h, const string& title, int d, string inititals) :
+gameplayscene::gameplayscene(Point xy, int w, int h, const string& title, int d) :
 Window(xy, w, h, title),
 background_with_color(Point(0,0),800,600),
 quit_button(Point(729, 0), 70, 30, "Quit", cb_quit),
 quit_b(Point(729,0),70,30),
-undo_button(Point(0, 0), 70, 30, "Undo", cb_undo),
-undo_b(Point(0, 0), 70, 30),
 spatula1_button(Point(0, 560), 50, 30, "1", cb_spatula1),
 spatula1_b(Point(0,560),50,30),
 //spatula1_pushed(false),
@@ -46,7 +44,6 @@ spatula8_b(Point(0,280),50,30)
 	background_with_color.set_fill_color(Color::cyan);
 	attach(background_with_color);
 	attach(quit_button);
-	attach(undo_button);
 	attach(spatula1_button);
 	attach(spatula2_button);
 	attach(spatula3_button);
@@ -58,8 +55,6 @@ spatula8_b(Point(0,280),50,30)
 	
 	quit_b.set_fill_color(Color::red);
 	attach(quit_b);
-	undo_b.set_fill_color(Color::green);
-	attach(undo_b);
 	spatula1_b.set_fill_color(Color::white);
 	attach(spatula1_b);
 	spatula2_b.set_fill_color(Color::white);
@@ -83,6 +78,7 @@ spatula8_b(Point(0,280),50,30)
 //------------------------------------------------------------------------------
 void gameplayscene::testforwin()
 {
+	
 	if (randompancakes[8]==9 && randompancakes[7]==8 && randompancakes[6]==7 && randompancakes[5]==6 && randompancakes[4]==5 && randompancakes[3]==4 && randompancakes[2]==3 && randompancakes[1]==2 && randompancakes[0]==1)
 	{
 		cout << "you win!" << "\n";
@@ -120,15 +116,6 @@ void gameplayscene::quit()
 {
 	hide();
 }
-
-void gameplayscene::undo()
-{
-	if (user_steps.size() > 0)
-	{
-		flip(user_steps[user_steps.size() - 1]);
-		user_steps.pop_back();
-	}
-}
 //------------------------------------------------------------------------------
 
 void gameplayscene::flip(int x){
@@ -137,22 +124,24 @@ void gameplayscene::flip(int x){
 	{
 		for (int i=1;i<=psize/2;++i)
 		{
-		int j = 0;
-		pancake_stack[psize-i]->move(0,40*(psize-(j)));
-		pancake_stack[0+(psize-1)]->move(0,-40*(psize+(j)));
-		swap(pancake_stack[0+(i-1)],pancake_stack[psize-i]);
-		swap(randompancakes[0+(i-1)],randompancakes[psize-i]);
-		++j;
+		int ho = 40*(psize-1);
+		int drop = ho-80*(i-1);
+		pancake_stack[pancake_stack.size()-i]->move(0,drop);
+		pancake_stack[i-1+x]->move(0,-1*drop);
+		swap(pancake_stack[i-1+x],pancake_stack[pancake_stack.size()-i]);
+		swap(randompancakes[i-1+x],randompancakes[pancake_stack.size()-i]);
 		}
 	}
-	else 
+	else if (psize % 2 == 1)
 	{
-		for (int i=1;i<psize/2-1;++i)
+		for (int i=1;i<=psize/2+1;++i)
 		{
-		pancake_stack[psize-i]->move(0,40*(psize-i));
-		pancake_stack[0+(i-1)]->move(0,-40*(psize-i));
-		swap(pancake_stack[0+(i-1)],pancake_stack[psize-i]);
-		swap(randompancakes[0+(i-1)],randompancakes[psize-i]);
+		int ho = 40*(psize-1);
+		int drop = ho-80*(i-1);
+		pancake_stack[pancake_stack.size()-i]->move(0,drop);
+		pancake_stack[i-1+x]->move(0,-1*drop);
+		swap(pancake_stack[i-1+x],pancake_stack[pancake_stack.size()-i]);
+		swap(randompancakes[i-1+x],randompancakes[pancake_stack.size()-i]);
 		}
 	}
 	redraw();
@@ -161,44 +150,36 @@ void gameplayscene::flip(int x){
 //------------------------------------------------------------------------------
 void gameplayscene::spatula1()
 {
-	user_steps.push_back(0);
 	flip(0);
 }
 void gameplayscene::spatula2()
 {
-	user_steps.push_back(1);
 	flip(1);
 }
 //------------------------------------------------------------------------------
 void gameplayscene::spatula3()
 {
-	user_steps.push_back(2);
 	flip(2);
 }
 //------------------------------------------------------------------------------ 
 void gameplayscene::spatula4()
 {
-	user_steps.push_back(3);
 	flip(3);
 }
 void gameplayscene::spatula5()
 {
-	user_steps.push_back(4);
 	flip(4);
 }
 void gameplayscene::spatula6()
 {
-	user_steps.push_back(5);
 	flip(5);
 }
 void gameplayscene::spatula7()
 {
-	user_steps.push_back(6);
 	flip(6);
 }
 void gameplayscene::spatula8()
 {
-	user_steps.push_back(7);
 	flip(7);
 }
 bool gameplayscene::wait_for_button() //need to get red x to work
@@ -221,11 +202,6 @@ bool gameplayscene::wait_for_button() //need to get red x to work
 void gameplayscene::cb_quit(Address, Address pw)
 {
 	reference_to<gameplayscene>(pw).quit();
-}
-
-void gameplayscene::cb_undo(Address, Address u)
-{
-	reference_to<gameplayscene>(u).undo();
 }
 
 void gameplayscene::cb_spatula1(Address, Address a)
