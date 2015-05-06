@@ -96,8 +96,6 @@ protected:
 	
 	static void cb_initials(Address, Address);
 	void play_initials();
-	
-	string initials;
 };
 
 //------------------------------------------------------------------------------

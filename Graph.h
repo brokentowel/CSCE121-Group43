@@ -217,11 +217,11 @@ struct Rectangle : Shape {
     }
     void draw_lines() const;
 
-    int height() const { return h; }
-    int width() const { return w; }
-private:
-    int h;    // height
-    int w;    // width
+    int height() { return h; }
+    int width() { return w; }
+	
+	int h;
+	int w;
 };
 
 //------------------------------------------------------------------------------
@@ -376,7 +376,7 @@ Suffix::Encoding get_encoding(const string& s);
 
 //------------------------------------------------------------------------------
 
-struct Image : Shape {
+struct Image : public Shape {
     Image(Point xy, string file_name, Suffix::Encoding e = Suffix::none);
     ~Image() { delete p; }
     void draw_lines() const;

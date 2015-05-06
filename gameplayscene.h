@@ -19,14 +19,14 @@ using namespace Graph_lib;
 class gameplayscene :public Graph_lib::Window{
 public:
 	
-	gameplayscene(Point xy, int w, int h, const string& title, int d, string inititals);
+	gameplayscene(Point xy, int w, int h, const string& title, int d);
 
 	bool wait_for_button(); // simple event loop
 	
 	void create_stack(int diff);
 	void draw_pancakes();
 	void flip(int x);
-	void testforwin();
+	void testforwin(void);
 	/*
 	int h1;
 	int h2;
@@ -55,7 +55,6 @@ public:
 	vector<int> pancakeheights;
 	*/
 	Rectangle quit_b;
-	Rectangle undo_b;
 	Rectangle spatula1_b;
 	Rectangle spatula2_b;
 	Rectangle spatula3_b;
@@ -68,12 +67,14 @@ public:
 	
 	vector<int> randomize_pancakes(int diff);
 	
+	vector <pancake*> pancake_stack;	
+	vector <int> randomstackintegers;
+    vector <int> randompancakes;
+	
 protected:
 	//set window background color to cyan <code>
 	Button quit_button;
 	bool quit_pushed;
-	Button undo_button;
-	bool undo_pushed;
 	
 	Button spatula1_button;     //spatula button
 	//bool spatula1_pushed;     
@@ -93,7 +94,6 @@ protected:
 	bool spatula8_pushed;
 
 	static void cb_quit(Address, Address); // callback for play_button
-	static void cb_undo(Address, Address);
 	static void cb_spatula1(Address, Address); //callback for spatula button
 	static void cb_spatula2(Address, Address); 
 	static void cb_spatula3(Address, Address);
@@ -104,7 +104,6 @@ protected:
 	static void cb_spatula8(Address, Address);
 
 	void quit();
-	void undo();
 	void spatula1();            // action to be done when spatula button is pressed
 	void spatula2();
 	void spatula3();
@@ -114,11 +113,7 @@ protected:
 	void spatula7();
 	void spatula8();
 
-private:
-vector <pancake*> pancake_stack;	
-vector <int> randomstackintegers;
-vector <int> randompancakes;
-vector <int> user_steps;
+
 };
 
 //------------------------------------------------------------------------------

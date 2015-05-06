@@ -81,7 +81,7 @@ void gameplayscene::testforwin(void)
 {
 	for (int i=0;i<=pancake_stack.size()-1;++i)
 	{
-		if (randompancakes[i]>randompancakes[i+1])
+		if (randompancakes[i]<randompancakes[i+1])
 		{
 			return;
 		}
