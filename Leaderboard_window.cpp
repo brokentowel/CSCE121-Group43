@@ -42,7 +42,7 @@ void Leaderboard_window::back()
 {
 	back_pushed = true;
 	hide();
-	Splash_screen splash(Point(100,200),800,600,"FlipFlaps");
+	Splash_screen splash(Point(100, 200), 800, 600, "FlipFlaps");
     wait_for_button();
 }
 
@@ -56,7 +56,7 @@ bool Leaderboard_window::wait_for_button() //need to get red x to work
     Fl::redraw();
 #else
     // To handle the case where the user presses the X button in the window frame
-    // to kill the application, change the condition to 0 to enable this branch.
+    // to kill the application, change the condition to 0 to enable this branch
     Fl::run();
 #endif
     //return button_pushed;

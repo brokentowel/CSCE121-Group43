@@ -19,7 +19,7 @@ using namespace Graph_lib;
 class gameplayscene :public Graph_lib::Window{
 public:
 	
-	gameplayscene(Point xy, int w, int h, const string& title, int d);
+	gameplayscene(Point xy, int w, int h, const string& title, int d, string initials);
 
 	bool wait_for_button(); // simple event loop
 	

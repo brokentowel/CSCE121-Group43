@@ -56,7 +56,7 @@ void Splash_screen::difficulty2()
 {
 	hide();
 	difficulty2_pushed = true;
-	gameplayscene gameplay{Point{100,100},800,600,"Gameplay", 2};
+	gameplayscene gameplay{Point{100,100},800,600,"Gameplay", 2, initials};
 	gui_main(); //wait_for_button();
 }
 
@@ -64,7 +64,7 @@ void Splash_screen::difficulty3()
 {
 	hide();
 	difficulty3_pushed = true;
-	gameplayscene gameplay{Point{100,100},800,600,"Gameplay", 3};
+	gameplayscene gameplay{Point{100,100},800,600,"Gameplay", 3, initials};
 	wait_for_button();
 }
 
@@ -72,7 +72,7 @@ void Splash_screen::difficulty4()
 {
 	hide();
 	difficulty4_pushed = true;
-	gameplayscene gameplay{Point{100,100},800,600,"Gameplay", 4};
+	gameplayscene gameplay{Point{100,100},800,600,"Gameplay", 4, initials};
 	wait_for_button();
 }
 
@@ -80,7 +80,7 @@ void Splash_screen::difficulty5()
 {
 	hide();
 	difficulty5_pushed = true;
-	gameplayscene gameplay{Point{100,100},800,600,"Gameplay", 5};
+	gameplayscene gameplay{Point{100,100},800,600,"Gameplay", 5, initials};
 	wait_for_button();
 }
 
@@ -88,7 +88,7 @@ void Splash_screen::difficulty6()
 {
 	hide();
 	difficulty6_pushed = true;
-	gameplayscene gameplay{Point{100,100},800,600,"Gameplay", 6};
+	gameplayscene gameplay{Point{100,100},800,600,"Gameplay", 6, initials};
 	wait_for_button();
 }
 
@@ -96,7 +96,7 @@ void Splash_screen::difficulty7()
 {
 	hide();
 	difficulty7_pushed = true;
-	gameplayscene gameplay{Point{100,100},800,600,"Gameplay", 7};
+	gameplayscene gameplay{Point{100,100},800,600,"Gameplay", 7, initials};
 	wait_for_button();
 }
 
@@ -104,7 +104,7 @@ void Splash_screen::difficulty8()
 {
 	hide();
 	difficulty8_pushed = true;
-	gameplayscene gameplay{Point{100,100},800,600,"Gameplay", 8};
+	gameplayscene gameplay{Point{100,100},800,600,"Gameplay", 8, initials};
 	wait_for_button();
 }
 
@@ -112,7 +112,7 @@ void Splash_screen::difficulty9()
 {
 	hide();
 	difficulty9_pushed = true;
-	gameplayscene gameplay{Point{100,100},800,600,"Gameplay", 9};
+	gameplayscene gameplay{Point{100,100},800,600,"Gameplay", 9, initials};
 	wait_for_button();
 }
 //------------------------------------------------------------------------------
@@ -155,7 +155,7 @@ void Splash_screen::play_initials()
 	detach(ldr_button);
 	detach(rules_button);
 	detach(quit_button);
-	
+
 	initials_pushed = true;
 	
 	attach(initials_button);
@@ -168,6 +168,8 @@ void Splash_screen::play_initials()
 
 bool Splash_screen::play()
 {
+	initials = initials_box.get_string();
+	
 	detach(initials_button);
 	detach(initials_box);
 	

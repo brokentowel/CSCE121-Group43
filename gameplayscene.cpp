@@ -9,7 +9,7 @@ using namespace Graph_lib;
 
 //------------------------------------------------------------------------------
 
-gameplayscene::gameplayscene(Point xy, int w, int h, const string& title, int d) :
+gameplayscene::gameplayscene(Point xy, int w, int h, const string& title, int d, string initials) :
 Window(xy, w, h, title),
 background_with_color(Point(0,0),800,600),
 quit_button(Point(729, 0), 70, 30, "Quit", cb_quit),
