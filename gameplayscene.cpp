@@ -9,7 +9,7 @@ using namespace Graph_lib;
 
 //------------------------------------------------------------------------------
 
-gameplayscene::gameplayscene(Point xy, int w, int h, const string& title, int d, string initials) :
+gameplayscene::gameplayscene(Point xy, int w, int h, const string& title, int d) :
 Window(xy, w, h, title),
 background_with_color(Point(0,0),800,600),
 quit_button(Point(729, 0), 70, 30, "Quit", cb_quit),
@@ -76,6 +76,14 @@ spatula8_b(Point(0,280),50,30)
 	
 }
 //------------------------------------------------------------------------------
+void gameplayscene::testforwin()
+{
+	if (randompancakes[8]==9 && randompancakes[7]==8 && randompancakes[6]==7 && randompancakes[5]==6 && randompancakes[4]==5 && randompancakes[3]==4 && randompancakes[2]==3 && randompancakes[1]==2 && randompancakes[0]==1)
+	{
+		cout << "you win!" << "\n";
+	}
+}
+
 void gameplayscene::create_stack(int diff)
 {
 	int h = 560;
@@ -108,55 +116,68 @@ void gameplayscene::quit()
 	hide();
 }
 //------------------------------------------------------------------------------
-/*
-void gameplayscene::flip(int height, int move){
-	
+
+void gameplayscene::flip(int x){
+	int psize = pancake_stack.size()-x;
+	if (psize % 2 == 0)
+	{
+		for (int i=1;i<=psize/2;++i)
+		{
+		int j = 0;
+		pancake_stack[psize-i]->move(0,40*(psize-(j)));
+		pancake_stack[0+(psize-1)]->move(0,-40*(psize+(j)));
+		swap(pancake_stack[0+(i-1)],pancake_stack[psize-i]);
+		swap(randompancakes[0+(i-1)],randompancakes[psize-i]);
+		++j;
+		}
+	}
+	else 
+	{
+		for (int i=1;i<psize/2-1;++i)
+		{
+		pancake_stack[psize-i]->move(0,40*(psize-i));
+		pancake_stack[0+(i-1)]->move(0,-40*(psize-i));
+		swap(pancake_stack[0+(i-1)],pancake_stack[psize-i]);
+		swap(randompancakes[0+(i-1)],randompancakes[psize-i]);
+		}
+	}
+	redraw();
 }
-*/
+
 //------------------------------------------------------------------------------
 void gameplayscene::spatula1()
 {
-	
+	flip(0);
 }
 void gameplayscene::spatula2()
 {
-	//spatula2_pushed = true;
+	flip(1);
 }
 //------------------------------------------------------------------------------
 void gameplayscene::spatula3()
 {
-	//spatula3_pushed = true;
-	
-	redraw();
+	flip(2);
 }
 //------------------------------------------------------------------------------ 
 void gameplayscene::spatula4()
 {
-	//spatula4_pushed = true;
-
-	redraw();
+	flip(3);
 }
 void gameplayscene::spatula5()
 {
-	//spatula5_pushed = true;
-	
-	redraw();
+	flip(4);
 }
 void gameplayscene::spatula6()
 {
-	//spatula6_pushed = true;
-	
-	redraw();
+	flip(5);
 }
 void gameplayscene::spatula7()
 {
-	//spatula7_pushed = true;
-	redraw();
+	flip(6);
 }
 void gameplayscene::spatula8()
 {
-	//spatula8_pushed = true;
-	
+	flip(7);
 }
 bool gameplayscene::wait_for_button() //need to get red x to work
 {
