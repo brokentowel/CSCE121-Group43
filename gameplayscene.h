@@ -19,12 +19,14 @@ using namespace Graph_lib;
 class gameplayscene :public Graph_lib::Window{
 public:
 	
-	gameplayscene(Point xy, int w, int h, const string& title, int d, string initials);
+	gameplayscene(Point xy, int w, int h, const string& title, int d);
 
 	bool wait_for_button(); // simple event loop
 	
 	void create_stack(int diff);
 	void draw_pancakes();
+	void flip(int x);
+	void testforwin();
 	/*
 	int h1;
 	int h2;
