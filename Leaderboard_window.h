@@ -9,6 +9,7 @@ using namespace Graph_lib;
 
 //------------------------------------------------------------------------------
 
+// handles the leaderboard window and everything in it
 struct Leaderboard_window : Graph_lib::Window {
     Leaderboard_window(Point xy, int w, int h, const string& title );
 	Leaderboard_window(Point xy, int w, int h, const string& title, string initials, int final_score );
@@ -21,7 +22,6 @@ protected:
     bool back_pushed;
 	
 	struct score_entry { string initials; int score; };
-	bool is_lower(const score_entry&, const score_entry&);
 	
 	void set_leaderboard(const score_entry& s);
 	void sort_scores(vector<score_entry>&);
