@@ -4,16 +4,20 @@ gameplayscene.cpp
 
 #include "gameplayscene.h"
 #include "Graph.h"
+#include "find_solution.h"
+#include "Leaderboard_window.h"
 
 using namespace Graph_lib;
 
 //------------------------------------------------------------------------------
 
-gameplayscene::gameplayscene(Point xy, int w, int h, const string& title, int d) :
+gameplayscene::gameplayscene(Point xy, int w, int h, const string& title, int d, string initials) :
 Window(xy, w, h, title),
 background_with_color(Point(0,0),800,600),
 quit_button(Point(729, 0), 70, 30, "Quit", cb_quit),
 quit_b(Point(729,0),70,30),
+undo_button(Point(0, 0), 70, 30, "Undo", cb_undo),
+undo_b(Point(0, 0), 70, 30),
 spatula1_button(Point(0, 560), 50, 30, "1", cb_spatula1),
 spatula1_b(Point(0,560),50,30),
 //spatula1_pushed(false),
@@ -44,6 +48,7 @@ spatula8_b(Point(0,280),50,30)
 	background_with_color.set_fill_color(Color::cyan);
 	attach(background_with_color);
 	attach(quit_button);
+	attach(undo_button);
 	attach(spatula1_button);
 	attach(spatula2_button);
 	attach(spatula3_button);
@@ -54,6 +59,8 @@ spatula8_b(Point(0,280),50,30)
 	attach(spatula8_button);
 	
 	quit_b.set_fill_color(Color::red);
+	undo_b.set_fill_color(Color::green);
+	attach(undo_b);
 	attach(quit_b);
 	spatula1_b.set_fill_color(Color::white);
 	attach(spatula1_b);
@@ -72,22 +79,38 @@ spatula8_b(Point(0,280),50,30)
 	spatula8_b.set_fill_color(Color::white);
 	attach(spatula8_b);
 	
+	player_initials = initials;
+	
 	create_stack(d);
 	
 }
 //------------------------------------------------------------------------------
 //checks if you won
+void gameplayscene::win(void)
+{
+	hide();
+	int score = calculate_score();
+	Leaderboard_window leaders(Point(100,200),400,300,"Leaderboard", player_initials, score);
+	wait_for_button();
+}
+
 void gameplayscene::testforwin(void)
 {
-	for (int i=0;i<=pancake_stack.size()-1;++i)
+	for (int i=0; i < randompancakes.size()-1; ++i)
 	{
-		if (randompancakes[i]<randompancakes[i+1])
+		if (randompancakes[i] < randompancakes[i+1])
 		{
 			return;
 		}
 	}
-	cout << "you win!";
+	win();
 }
+
+int gameplayscene::calculate_score()
+{
+	return (100 - 10 * (user_steps.size() - get_minimum_steps())) * randompancakes.size();
+}
+
 //create pancakes
 void gameplayscene::create_stack(int diff)
 {
@@ -100,6 +123,17 @@ void gameplayscene::create_stack(int diff)
 	}
 	draw_pancakes();
 }
+
+void gameplayscene::undo()
+{
+	if (user_steps.size() > 0)
+	{
+		flip(user_steps[user_steps.size() - 1]);
+		user_steps.pop_back();
+	}
+}
+
+
 //get the randomization
 vector <int> gameplayscene::randomize_pancakes(int diff){
 	for (int i = 1; i <=diff; ++i){
@@ -133,7 +167,7 @@ void gameplayscene::flip(int x){
 		pancake_stack[pancake_stack.size()-i]->move(0,drop);
 		pancake_stack[i-1+x]->move(0,-1*drop);
 		std::swap(pancake_stack[i-1+x],pancake_stack[pancake_stack.size()-i]);
-		std::swap(randompancakes[i-1+x],randompancakes[pancake_stack.size()-i]);
+		swap(randompancakes[i-1+x],randompancakes[randompancakes.size()-i]);
 		}
 	}
 	else if (psize % 2 == 1)
@@ -145,47 +179,75 @@ void gameplayscene::flip(int x){
 		pancake_stack[pancake_stack.size()-i]->move(0,drop);
 		pancake_stack[i-1+x]->move(0,-1*drop);
 		std::swap(pancake_stack[i-1+x],pancake_stack[pancake_stack.size()-i]);
-		std::swap(randomstackintegers[i-1+x],randomstackintegers[pancake_stack.size()-i]);
+		swap(randompancakes[i-1+x],randompancakes[randompancakes.size()-i]);
 		}
 	}
+	
 	redraw();
+
+}
+
+int gameplayscene::get_minimum_steps()
+{
+	return find_solution(randomstackintegers)->size();	// since find_solution() returns a pointer to an array, we must use -> to access the member function
+}
+
+void gameplayscene::cycle()
+{
 	testforwin();
+	// # of flips that it can be done in, current score, and a flip counter
 }
 
 //------------------------------------------------------------------------------
 void gameplayscene::spatula1()
 {
+	user_steps.push_back(0);
 	flip(0);
+	cycle();
 }
 void gameplayscene::spatula2()
 {
+	user_steps.push_back(1);
 	flip(1);
+	cycle();
 }
 //------------------------------------------------------------------------------
 void gameplayscene::spatula3()
 {
+	user_steps.push_back(2);
 	flip(2);
+	cycle();
 }
 //------------------------------------------------------------------------------ 
 void gameplayscene::spatula4()
 {
+	user_steps.push_back(3);
 	flip(3);
+	cycle();
 }
 void gameplayscene::spatula5()
 {
+	user_steps.push_back(4);
 	flip(4);
+	cycle();
 }
 void gameplayscene::spatula6()
 {
+	user_steps.push_back(5);
 	flip(5);
+	cycle();
 }
 void gameplayscene::spatula7()
 {
+	user_steps.push_back(6);
 	flip(6);
+	cycle();
 }
 void gameplayscene::spatula8()
 {
+	user_steps.push_back(7);
 	flip(7);
+	cycle();
 }
 bool gameplayscene::wait_for_button() //need to get red x to work
 {
@@ -264,3 +326,8 @@ void gameplayscene::cb_spatula8(Address, Address h)
 }
 
 //------------------------------------------------------------------------------
+
+void gameplayscene::cb_undo(Address, Address u)
+{
+	reference_to<gameplayscene>(u).undo();
+}
