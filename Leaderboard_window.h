@@ -26,6 +26,9 @@ protected:
 	void set_leaderboard(const score_entry& s);
 	void sort_scores(vector<score_entry>&);
 	
+	Rectangle bg;
+	Rectangle back_rect;
+	
     //add rectangle for bg
     //add text so we can write
 	

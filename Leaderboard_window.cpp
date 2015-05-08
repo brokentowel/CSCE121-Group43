@@ -18,8 +18,14 @@ using namespace Graph_lib;
 Leaderboard_window::Leaderboard_window(Point xy, int w, int h, const string& title, string initials, int final_score) :
     Window(xy,w,h,title),
     back_button(Point(0, 0), 50, 20, "Back", cb_back),
-	back_pushed(false)
+	back_pushed(false),
+	bg(Point(0, 0), 400, 300),
+	back_rect(Point(0,0), 50, 20)
 {
+	bg.set_fill_color(Color::black);
+	attach(bg);
+	back_rect.set_fill_color(Color::white);
+	attach(back_rect);
 	Text* text_score;
 	text_score = new Text(Point(50, 50), "Final score: " + std::to_string(final_score));	// I have to create a pointer to text for some reason
 	text_score->set_font_size(30);
@@ -49,8 +55,14 @@ Leaderboard_window::Leaderboard_window(Point xy, int w, int h, const string& tit
 Leaderboard_window::Leaderboard_window(Point xy, int w, int h, const string& title) :
     Window(xy,w,h,title),
     back_button(Point(0, 0), 50, 20, "Back", cb_back),
-	back_pushed(false)
+	back_pushed(false),
+	bg(Point(0, 0), 400, 300),
+	back_rect(Point(0,0), 50, 20)
 {
+	bg.set_fill_color(Color::black);
+	attach(bg);
+	back_rect.set_fill_color(Color::white);
+	attach(back_rect);
 	attach(back_button);
 	vector<Text*> all_scores;
 	ifstream ist {"scores.txt"}; // ist reads from the file named iname
@@ -73,8 +85,7 @@ bool Leaderboard_window::is_lower(const score_entry& x, const score_entry& y) { 
 
 void Leaderboard_window::set_leaderboard(const score_entry& s)
 {
-	cout << s.initials << "!!" << endl;
-	vector<score_entry> scores;
+	vector<score_entry> scores(6);
 		
 	//read current leaderboard from leaderboard.txt
 	ifstream ist {"scores.txt"}; 
@@ -92,7 +103,7 @@ void Leaderboard_window::set_leaderboard(const score_entry& s)
 	sort_scores(scores);	//sort(scores.begin(), scores.end());
 	//write top 5 scores back to scores.txt	
 	ofstream ost {"scores.txt"};
-	for (int i = 0; i < scores.size()-1; i++)
+	for (int i = 0; i < 5; i++)
 	{
 		ost << scores[i].initials << '\t' << scores[i].score << "\r\n";		
 	}        

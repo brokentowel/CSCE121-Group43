@@ -42,9 +42,8 @@ spatula7_b(Point(0,320),50,30),
 spatula8_button(Point(0, 280), 50, 30, "8", cb_spatula8),
 spatula8_b(Point(0,280),50,30)
 //spatula8_pushed(false),
-
 {
-
+	//Color pancake
 	background_with_color.set_fill_color(Color::cyan);
 	attach(background_with_color);
 	attach(quit_button);
