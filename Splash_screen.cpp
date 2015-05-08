@@ -1,7 +1,7 @@
 /*
    Splash_screen.cpp
    Revised form of Simple_window.cpp to conform to project needs
-   Kenneth Payne		5/2/2015
+   Liam, Ricky, Kenneth, Faraaz
 */
 
 #include "Splash_screen.h"
@@ -12,6 +12,7 @@ using namespace Graph_lib;
 
 //------------------------------------------------------------------------------
 
+// constructor for splash screen window and everything in it
 Splash_screen::Splash_screen(Point xy, int w, int h, const string& title) :
     Window(xy,w,h,title),
 	difficulty2_button(Point(350, 50), 100, 30, "2 - Easiest", cb_difficulty2),
@@ -52,6 +53,8 @@ Splash_screen::Splash_screen(Point xy, int w, int h, const string& title) :
 	attach(bg);
 }
 //-------------------------------------------------------
+
+// below are the different functions called for different difficulty levels (correlating with the buttons)
 void Splash_screen::difficulty2()
 {
 	hide();
@@ -116,6 +119,8 @@ void Splash_screen::difficulty9()
 	wait_for_button();
 }
 //------------------------------------------------------------------------------
+
+// button for quitting the game
 void Splash_screen::quit()
 {
 	detach(play_button);
@@ -125,6 +130,8 @@ void Splash_screen::quit()
     hide();
 }
 //------------------------------------------------------------------------------
+
+// back button from rules
 void Splash_screen::rules_back()
 {
 	rules_back_button_pushed = true;
@@ -133,6 +140,8 @@ void Splash_screen::rules_back()
     wait_for_button();
 }
 //------------------------------------------------------------------------------
+
+// displays the rules
 void Splash_screen::rules()
 {
 	detach(bg);
@@ -148,6 +157,7 @@ void Splash_screen::rules()
 }
 //------------------------------------------------------------------------------
 
+// goes to the initial box so that the user can input initials
 void Splash_screen::play_initials()
 {
 	detach(bg);
@@ -165,6 +175,8 @@ void Splash_screen::play_initials()
 	
 	wait_for_button();
 }
+
+// starts the game based on the difficulty set
 
 bool Splash_screen::play()
 {
@@ -195,6 +207,8 @@ bool Splash_screen::play()
     wait_for_button();
 }
 //------------------------------------------------------------------------------
+
+// initializes a leaderboard window
 void Splash_screen::ldr()
 {
 	hide();
@@ -204,7 +218,7 @@ void Splash_screen::ldr()
 }
 //------------------------------------------------------------------------------ 
 
-bool Splash_screen::wait_for_button() //need to get red x to work
+bool Splash_screen::wait_for_button()
 {
     //show();
     quit_pushed = false;
@@ -221,6 +235,8 @@ bool Splash_screen::wait_for_button() //need to get red x to work
 }
 
 //------------------------------------------------------------------------------
+
+// below are the callback functions for our program
 void Splash_screen::cb_quit(Address, Address pw)
 {  
     reference_to<Splash_screen>(pw).quit();    
