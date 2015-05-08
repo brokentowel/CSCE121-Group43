@@ -6,6 +6,7 @@ gameplayscene.cpp
 #include "Graph.h"
 #include "find_solution.h"
 #include "Leaderboard_window.h"
+#include "colors.h"
 
 using namespace Graph_lib;
 
@@ -40,12 +41,18 @@ spatula7_button(Point(0, 320), 50, 30, "7", cb_spatula7),
 spatula7_b(Point(0,320),50,30),
 //spatula7_pushed(false),
 spatula8_button(Point(0, 280), 50, 30, "8", cb_spatula8),
-spatula8_b(Point(0,280),50,30)
+spatula8_b(Point(0,280),50,30),
 //spatula8_pushed(false),
+bg(Point(0, 0), "small_logo.jpg")
 {
-	//Color pancake
-	background_with_color.set_fill_color(Color::cyan);
+	Color pancake(fl_rgb_color(232, 215, 137));
+	Color dark_pancakes(fl_rgb_color(207, 191, 122));
+	Color background_blue(fl_rgb_color(122, 138, 207));
+	Color dark_background_blue(fl_rgb_color(107, 121, 181));
+	
+	background_with_color.set_fill_color(game_blue);
 	attach(background_with_color);
+	attach(bg);
 	attach(quit_button);
 	attach(undo_button);
 	attach(spatula1_button);
@@ -57,10 +64,8 @@ spatula8_b(Point(0,280),50,30)
 	attach(spatula7_button);
 	attach(spatula8_button);
 	
-	quit_b.set_fill_color(Color::red);
-	undo_b.set_fill_color(Color::green);
+	undo_b.set_fill_color(dark_blue);
 	attach(undo_b);
-	attach(quit_b);
 	spatula1_b.set_fill_color(Color::white);
 	attach(spatula1_b);
 	spatula2_b.set_fill_color(Color::white);
@@ -145,7 +150,8 @@ vector <int> gameplayscene::randomize_pancakes(int diff){
 
 void gameplayscene::draw_pancakes(){
 	for (int i = 0; i < pancake_stack.size(); ++i){
-		pancake_stack[i]->set_fill_color(Color::yellow);
+		pancake_stack[i]->set_fill_color(pancake_color);
+		pancake_stack[i]->set_color(toasty);
 		attach(*pancake_stack[i]);
 	}
 }

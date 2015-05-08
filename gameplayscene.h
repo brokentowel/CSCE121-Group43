@@ -30,34 +30,10 @@ public:
 	void win();
 	int calculate_score();
 	
+	Image bg;
+	
 	string player_initials;
-	/*
-	int h1;
-	int h2;
-	int h3;
-	int h4;
-	int h5;
-	int h6;
-	int h7;
-	int h8;
-	int h9;
-	
-	void flip(int, int);
-	
-	Rectangle pancake1;
-	Rectangle pancake2;
-	Rectangle pancake3;
-	Rectangle pancake4;
-	Rectangle pancake5;
-	Rectangle pancake6;
-	Rectangle pancake7;
-	Rectangle pancake8;
-	Rectangle pancake9;
-	
-	vector<Rectangle> pancakeswoheight;
-	vector<Rectangle> pancakeswithheight;
-	vector<int> pancakeheights;
-	*/
+
 	Rectangle quit_b;
 	Rectangle undo_b;
 	Rectangle spatula1_b;
