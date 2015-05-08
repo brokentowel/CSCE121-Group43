@@ -1,5 +1,11 @@
-// main.cpp
 // game screen size is 800 x 600
+/*
+pancake project for Walter Daugherity on 5/3/2015
+Liam Moran
+Ricky Padilla
+Kenneth Payne
+Faraaz Sunesara
+*/
 
 #include "std_lib_facilities_4.h"
 #include "Splash_screen.h"
