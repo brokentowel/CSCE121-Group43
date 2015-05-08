@@ -5,17 +5,11 @@
 #include "Graph.h"
 #include "std_lib_facilities_4.h"
 #include "pancake.h"
-/*
-Color c_pancake(fl_rgb_color(255, 218, 148));
-Color c_pancake_outline(fl_rgb_color(191, 163, 111));
-Color c_cyan(fl_rgb_color(112, 186, 235));
-Color c_dark_blue(fl_rgb_color(6, 83, 138));
-*/
 
 using namespace Graph_lib;
 
 //------------------------------------------------------------------------------
-
+//this class is a window that houses the gmae
 class gameplayscene :public Graph_lib::Window{
 public:
 	
@@ -55,7 +49,8 @@ protected:
 	Button undo_button;
 	bool undo_pushed;
 	
-	Button spatula1_button;     //spatula button
+     //These are the buttons that tell the spatula where to flip
+	Button spatula1_button;    
 	//bool spatula1_pushed;     
 	Button spatula2_button;     
 	bool spatula2_pushed;
@@ -105,6 +100,5 @@ private:
 	int get_minimum_steps();
 };
 
-//------------------------------------------------------------------------------
 
 #endif // gameplaysceneH_GUARD
