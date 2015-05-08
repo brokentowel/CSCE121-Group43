@@ -28,7 +28,7 @@ Leaderboard_window::Leaderboard_window(Point xy, int w, int h, const string& tit
 	back_rect.set_fill_color(Color::white);
 	attach(back_rect);
 	Text* text_score;
-	text_score = new Text(Point(50, 50), "Final score: " + std::to_string(final_score));
+	text_score = new Text(Point(50, 50), "You win! Final score: " + std::to_string(final_score));
 	text_score->set_font_size(30);
 	text_score->set_color(Color::white);
 	attach(*text_score);
