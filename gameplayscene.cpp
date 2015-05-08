@@ -45,10 +45,6 @@ spatula8_b(Point(0,280),50,30),
 //spatula8_pushed(false),
 bg(Point(0, 0), "small_logo.jpg")
 {
-	Color pancake(fl_rgb_color(232, 215, 137));
-	Color dark_pancakes(fl_rgb_color(207, 191, 122));
-	Color background_blue(fl_rgb_color(122, 138, 207));
-	Color dark_background_blue(fl_rgb_color(107, 121, 181));
 	
 	background_with_color.set_fill_color(game_blue);
 	attach(background_with_color);
@@ -83,13 +79,14 @@ bg(Point(0, 0), "small_logo.jpg")
 	spatula8_b.set_fill_color(Color::white);
 	attach(spatula8_b);
 	
+	//creates that player
 	player_initials = initials;
 	
 	create_stack(d);
 	
 }
 //------------------------------------------------------------------------------
-//checks if you won
+//win condition test
 void gameplayscene::win(void)
 {
 	hide();
@@ -110,6 +107,7 @@ void gameplayscene::testforwin(void)
 	win();
 }
 
+//scores based on flips
 int gameplayscene::calculate_score()
 {
 	return (100 - 10 * (user_steps.size() - get_minimum_steps())) * randompancakes.size();
@@ -192,6 +190,7 @@ void gameplayscene::flip(int x){
 
 }
 
+//find the minimum flips to beat the given game-state
 int gameplayscene::get_minimum_steps()
 {
 	return find_solution(randomstackintegers)->size();	// since find_solution() returns a pointer to an array, we must use -> to access the member function
