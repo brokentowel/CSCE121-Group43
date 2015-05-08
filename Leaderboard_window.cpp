@@ -1,7 +1,7 @@
 /*
    Leaderboard_window.cpp
    Revised form of Simple_window.cpp to conform to project needs
-   Kenneth Payne		5/2/2015
+   Liam, Ricky, Kenneth, Farraz
 */
 
 #include "Splash_screen.h"
@@ -15,6 +15,7 @@ using namespace Graph_lib;
 
 //------------------------------------------------------------------------------
 
+// constructor for end game to set a high score
 Leaderboard_window::Leaderboard_window(Point xy, int w, int h, const string& title, string initials, int final_score) :
     Window(xy,w,h,title),
     back_button(Point(0, 0), 50, 20, "Back", cb_back),
@@ -27,7 +28,7 @@ Leaderboard_window::Leaderboard_window(Point xy, int w, int h, const string& tit
 	back_rect.set_fill_color(Color::white);
 	attach(back_rect);
 	Text* text_score;
-	text_score = new Text(Point(50, 50), "Final score: " + std::to_string(final_score));	// I have to create a pointer to text for some reason
+	text_score = new Text(Point(50, 50), "Final score: " + std::to_string(final_score));
 	text_score->set_font_size(30);
 	text_score->set_color(Color::white);
 	attach(*text_score);
@@ -52,6 +53,7 @@ Leaderboard_window::Leaderboard_window(Point xy, int w, int h, const string& tit
 	wait_for_button();
 }
 
+// constructor from splash screen
 Leaderboard_window::Leaderboard_window(Point xy, int w, int h, const string& title) :
     Window(xy,w,h,title),
     back_button(Point(0, 0), 50, 20, "Back", cb_back),
@@ -81,8 +83,7 @@ Leaderboard_window::Leaderboard_window(Point xy, int w, int h, const string& tit
 	wait_for_button();
 }
 
-bool Leaderboard_window::is_lower(const score_entry& x, const score_entry& y) { return x.score > y.score; }
-
+// adds entry to leaderboard, and returns the top 5 scores
 void Leaderboard_window::set_leaderboard(const score_entry& s)
 {
 	vector<score_entry> scores(6);
@@ -110,6 +111,7 @@ void Leaderboard_window::set_leaderboard(const score_entry& s)
 	ost.close();
 }
 
+// bubble sort for vector of score_entries
 void Leaderboard_window::sort_scores(vector<score_entry> &scores)
 {
       int i, j, flag = 1;    // set flag to 1 to start first pass
