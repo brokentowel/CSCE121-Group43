@@ -1,0 +1,5 @@
+AAA	0
+BBB	0
+CCC	0
+DDD	0
+EEE	0

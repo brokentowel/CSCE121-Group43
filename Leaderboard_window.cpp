@@ -103,6 +103,7 @@ void Leaderboard_window::sort_scores(vector<score_entry> &scores)
 {
       int i, j, flag = 1;    // set flag to 1 to start first pass
       int temp;             // holding variable
+	  string temp_s;
       int array_length = scores.size(); 
       for(i = 1; (i <= array_length) && flag; i++)
      {
@@ -112,8 +113,11 @@ void Leaderboard_window::sort_scores(vector<score_entry> &scores)
                if (scores[j+1].score > scores[j].score)      // ascending order simply changes to <
               { 
                     temp = scores[j].score;             // swap elements
+					temp_s = scores[j].initials; 
                     scores[j].score = scores[j+1].score;
+					scores[j].initials = scores[j+1].initials;
                     scores[j+1].score = temp;
+					scores[j+1].initials = temp_s;
                     flag = 1;               // indicates that a swap occurred.
                }
           }
